@@ -1,0 +1,9 @@
+@extends('backend.layouts.manger')
+@push('liveWire_styles')
+    @livewireStyles
+@endpush
+@section('content')
+    @livewire('admin-profile')
+@endsection
+@push('livewire_scripts')
+@endpush

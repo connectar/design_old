@@ -1,0 +1,424 @@
+/**
+ * DACH — Multi-theme tokens (CSS Variables only)
+ * -----------------------------------------------------------------------------
+ * - يُفعَّل الثيم عبر: <html data-theme="blue|purple|green|orange|red|dark|light">
+ * - التباين: ثيم `light` يستخدم نصوصاً داكنة على أسطح فاتحة؛ باقي الثيمات نص فاتح على أسطح داكنة.
+ * - لا تُعرّف ألوان نص ثابتة خارج المتغيرات في المكوّنات — استخدم dach-system.css (dach-input, dach-btn, …).
+ */
+
+/* -------------------------------------------------------------------------- */
+/* :root — قيم افتراضية (تُورَث حتى يُطبَّق data-theme) + أبعاد مشتركة      */
+/* -------------------------------------------------------------------------- */
+:root {
+    --sidebar-w: 288px;
+    --dach-form-radius-lg: 16px;
+    --dach-form-radius-md: 12px;
+    --dach-form-blur: 12px;
+
+    /* تمييز افتراضي — يُحدَّث من theme-manager.js عند التبديل */
+    --accent-1: #6366f1;
+    --accent-2: #8b5cf6;
+    --accent-glow: rgba(99, 102, 241, 0.35);
+    --text-on-accent: #ffffff;
+    --text-on-accent-soft: rgba(255, 255, 255, 0.92);
+
+    /* وضع التباين للوصولية البرمجية (اختياري) */
+    --theme-contrast-mode: dark-on-light;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ثيم فاتح — نص داكن إلزامي على كل الأسطح الفاتحة                          */
+/* -------------------------------------------------------------------------- */
+html[data-theme='light'] {
+    color-scheme: light;
+    --theme-contrast-mode: light-on-dark;
+
+    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    --surface-page: #f1f5f9;
+    --card-bg: rgba(255, 255, 255, 0.94);
+    --card-border: rgba(15, 23, 42, 0.1);
+    --sidebar-bg: rgba(255, 255, 255, 0.97);
+    --sidebar-border: rgba(15, 23, 42, 0.08);
+
+    /* WCAG: نص داكن على أسطح فاتحة — لا نص فاتح على فاتح */
+    --text-primary: #0f172a;
+    --text-secondary: #1e293b;
+    --text-muted: #475569;
+
+    --table-header-bg: rgba(79, 70, 229, 0.12);
+    --table-row-hover: rgba(79, 70, 229, 0.08);
+    --input-bg: #ffffff;
+    --input-border: rgba(15, 23, 42, 0.14);
+    --input-placeholder: #64748b;
+    --shadow: rgba(15, 23, 42, 0.12);
+
+    --link-color: #4338ca;
+    --link-hover: #312e81;
+    --focus-ring: rgba(79, 70, 229, 0.35);
+}
+
+/* -------------------------------------------------------------------------- */
+/* ثيمات داكنة — نص فاتح (لا نص أبيض بحت على أفتح منطقة الجدول فقط)        */
+/* -------------------------------------------------------------------------- */
+html[data-theme='dark'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 45%, #24243e 100%);
+    --surface-page: #0f0c22;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --sidebar-bg: rgba(15, 12, 41, 0.94);
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+
+    --text-primary: #f8fafc;
+    --text-secondary: rgba(248, 250, 252, 0.88);
+    --text-muted: rgba(248, 250, 252, 0.58);
+
+    --table-header-bg: rgba(99, 102, 241, 0.22);
+    --table-row-hover: rgba(99, 102, 241, 0.1);
+    --input-bg: rgba(255, 255, 255, 0.08);
+    --input-border: rgba(255, 255, 255, 0.14);
+    --input-placeholder: rgba(248, 250, 252, 0.45);
+    --shadow: rgba(0, 0, 0, 0.45);
+
+    --link-color: #c4b5fd;
+    --link-hover: #e9d5ff;
+    --focus-ring: rgba(129, 140, 248, 0.45);
+}
+
+html[data-theme='blue'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #0a192f 0%, #0d2137 50%, #112240 100%);
+    --surface-page: #0a192f;
+    --card-bg: rgba(17, 34, 64, 0.78);
+    --card-border: rgba(100, 255, 218, 0.18);
+    --sidebar-bg: rgba(10, 25, 47, 0.96);
+    --sidebar-border: rgba(100, 255, 218, 0.12);
+
+    /* تباين عالي على الأزرق الداكن — ليس رماديً فاتحاً على تركواز */
+    --text-primary: #e6f1ff;
+    --text-secondary: rgba(230, 241, 255, 0.82);
+    --text-muted: rgba(230, 241, 255, 0.52);
+
+    --table-header-bg: rgba(100, 255, 218, 0.14);
+    --table-row-hover: rgba(100, 255, 218, 0.08);
+    --input-bg: rgba(10, 25, 47, 0.65);
+    --input-border: rgba(100, 255, 218, 0.22);
+    --input-placeholder: rgba(230, 241, 255, 0.42);
+    --shadow: rgba(0, 0, 0, 0.5);
+
+    --link-color: #5eead4;
+    --link-hover: #99f6e4;
+    --focus-ring: rgba(45, 212, 191, 0.4);
+}
+
+html[data-theme='purple'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #3d2066 100%);
+    --surface-page: #1a0a2e;
+    --card-bg: rgba(45, 27, 78, 0.78);
+    --card-border: rgba(196, 181, 253, 0.2);
+    --sidebar-bg: rgba(26, 10, 46, 0.96);
+    --sidebar-border: rgba(168, 85, 247, 0.14);
+
+    --text-primary: #faf5ff;
+    --text-secondary: rgba(250, 245, 255, 0.8);
+    --text-muted: rgba(250, 245, 255, 0.5);
+
+    --table-header-bg: rgba(168, 85, 247, 0.2);
+    --table-row-hover: rgba(168, 85, 247, 0.1);
+    --input-bg: rgba(26, 10, 46, 0.55);
+    --input-border: rgba(192, 132, 252, 0.25);
+    --input-placeholder: rgba(250, 245, 255, 0.42);
+    --shadow: rgba(0, 0, 0, 0.48);
+
+    --link-color: #e9d5ff;
+    --link-hover: #f5d0fe;
+    --focus-ring: rgba(192, 132, 252, 0.42);
+}
+
+html[data-theme='green'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #052e16 0%, #064e3b 45%, #065f46 100%);
+    --surface-page: #022c22;
+    --card-bg: rgba(6, 78, 59, 0.72);
+    --card-border: rgba(52, 211, 153, 0.22);
+    --sidebar-bg: rgba(5, 46, 22, 0.96);
+    --sidebar-border: rgba(16, 185, 129, 0.14);
+
+    --text-primary: #ecfdf5;
+    --text-secondary: rgba(236, 253, 245, 0.82);
+    --text-muted: rgba(236, 253, 245, 0.5);
+
+    --table-header-bg: rgba(16, 185, 129, 0.2);
+    --table-row-hover: rgba(16, 185, 129, 0.1);
+    --input-bg: rgba(5, 46, 22, 0.55);
+    --input-border: rgba(52, 211, 153, 0.22);
+    --input-placeholder: rgba(236, 253, 245, 0.42);
+    --shadow: rgba(0, 0, 0, 0.48);
+
+    --link-color: #6ee7b7;
+    --link-hover: #a7f3d0;
+    --focus-ring: rgba(52, 211, 153, 0.4);
+}
+
+html[data-theme='orange'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #1c1008 0%, #431407 40%, #7c2d12 100%);
+    --surface-page: #1c1008;
+    --card-bg: rgba(67, 20, 7, 0.75);
+    --card-border: rgba(251, 146, 60, 0.22);
+    --sidebar-bg: rgba(28, 16, 8, 0.96);
+    --sidebar-border: rgba(251, 146, 60, 0.14);
+
+    /* كريمي فاتح على بني داكن — تباين قوي */
+    --text-primary: #fff7ed;
+    --text-secondary: rgba(255, 247, 237, 0.82);
+    --text-muted: rgba(255, 247, 237, 0.5);
+
+    --table-header-bg: rgba(251, 146, 60, 0.18);
+    --table-row-hover: rgba(251, 146, 60, 0.09);
+    --input-bg: rgba(28, 16, 8, 0.55);
+    --input-border: rgba(253, 186, 116, 0.28);
+    --input-placeholder: rgba(255, 247, 237, 0.45);
+    --shadow: rgba(0, 0, 0, 0.5);
+
+    --link-color: #fdba74;
+    --link-hover: #fed7aa;
+    --focus-ring: rgba(251, 146, 60, 0.42);
+}
+
+html[data-theme='red'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #1f0a0a 0%, #3d1212 50%, #4a1a1a 100%);
+    --surface-page: #1f0a0a;
+    --card-bg: rgba(61, 18, 18, 0.78);
+    --card-border: rgba(252, 165, 165, 0.2);
+    --sidebar-bg: rgba(31, 10, 10, 0.96);
+    --sidebar-border: rgba(239, 68, 68, 0.14);
+
+    --text-primary: #fef2f2;
+    --text-secondary: rgba(254, 242, 242, 0.82);
+    --text-muted: rgba(254, 242, 242, 0.5);
+
+    --table-header-bg: rgba(239, 68, 68, 0.2);
+    --table-row-hover: rgba(239, 68, 68, 0.1);
+    --input-bg: rgba(31, 10, 10, 0.55);
+    --input-border: rgba(252, 165, 165, 0.25);
+    --input-placeholder: rgba(254, 242, 242, 0.42);
+    --shadow: rgba(0, 0, 0, 0.48);
+
+    --link-color: #fecaca;
+    --link-hover: #fee2e2;
+    --focus-ring: rgba(248, 113, 113, 0.42);
+}
+
+/* توافق خلفي: قيم قديمة في localStorage — تُعامل كبرتقال */
+html[data-theme='gold'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #1a150a 0%, #2e2616 50%, #3d321e 100%);
+    --surface-page: #1a150a;
+    --card-bg: rgba(46, 38, 22, 0.78);
+    --card-border: rgba(245, 158, 11, 0.22);
+    --sidebar-bg: rgba(26, 21, 10, 0.96);
+    --sidebar-border: rgba(245, 158, 11, 0.12);
+
+    --text-primary: #fffbeb;
+    --text-secondary: rgba(255, 251, 235, 0.82);
+    --text-muted: rgba(255, 251, 235, 0.5);
+
+    --table-header-bg: rgba(245, 158, 11, 0.18);
+    --table-row-hover: rgba(245, 158, 11, 0.09);
+    --input-bg: rgba(26, 21, 10, 0.55);
+    --input-border: rgba(251, 191, 36, 0.25);
+    --input-placeholder: rgba(255, 251, 235, 0.42);
+    --shadow: rgba(0, 0, 0, 0.48);
+
+    --link-color: #fcd34d;
+    --link-hover: #fde68a;
+    --focus-ring: rgba(245, 158, 11, 0.4);
+}
+
+html[data-theme='cyan'] {
+    color-scheme: dark;
+    --theme-contrast-mode: dark-on-light;
+
+    --bg-gradient: linear-gradient(135deg, #0a1a2e 0%, #0f2847 50%, #14365e 100%);
+    --surface-page: #0a1a2e;
+    --card-bg: rgba(15, 40, 71, 0.78);
+    --card-border: rgba(103, 232, 249, 0.2);
+    --sidebar-bg: rgba(10, 26, 46, 0.96);
+    --sidebar-border: rgba(6, 182, 212, 0.14);
+
+    --text-primary: #ecfeff;
+    --text-secondary: rgba(236, 254, 255, 0.82);
+    --text-muted: rgba(236, 254, 255, 0.5);
+
+    --table-header-bg: rgba(6, 182, 212, 0.18);
+    --table-row-hover: rgba(6, 182, 212, 0.09);
+    --input-bg: rgba(10, 26, 46, 0.55);
+    --input-border: rgba(103, 232, 249, 0.22);
+    --input-placeholder: rgba(236, 254, 255, 0.42);
+    --shadow: rgba(0, 0, 0, 0.48);
+
+    --link-color: #67e8f9;
+    --link-hover: #a5f3fc;
+    --focus-ring: rgba(34, 211, 238, 0.4);
+}
+
+/*
+ * ضمان: لا يُستخدم لون النص الأساسي كخلفية في الثيم الفاتح،
+ * والعكس في الثيمات الداكنة — أي محتوى يستخدم المتغيرات أعلاه فقط يبقى مقروءاً.
+ */
+html[data-theme='light'] body {
+    color: var(--text-primary);
+    background: var(--bg-gradient);
+}
+
+html[data-theme='light'] .main {
+    color: var(--text-primary);
+}
+
+html[data-theme='dark'] body,
+html[data-theme='blue'] body,
+html[data-theme='purple'] body,
+html[data-theme='green'] body,
+html[data-theme='orange'] body,
+html[data-theme='red'] body,
+html[data-theme='gold'] body,
+html[data-theme='cyan'] body {
+    color: var(--text-primary);
+}
+
+/* -------------------------------------------------------------------------- */
+/* محتوى الإدارة القديم (Bootstrap) داخل DACH — تباين ثابت لكل الثيمات      */
+/* -------------------------------------------------------------------------- */
+.main.dach-ds {
+    color: var(--text-primary);
+}
+
+.main.dach-ds .text-muted,
+.main.dach-ds .help-block,
+.main.dach-ds small.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.main.dach-ds .table {
+    --bs-table-color: var(--text-secondary);
+    --bs-table-bg: transparent;
+    --bs-table-striped-color: var(--text-secondary);
+    --bs-table-striped-bg: color-mix(in srgb, var(--card-border) 55%, transparent);
+    --bs-table-hover-color: var(--text-primary);
+    --bs-table-hover-bg: var(--table-row-hover);
+    --bs-table-border-color: var(--card-border);
+    color: var(--text-secondary);
+}
+
+.main.dach-ds .table > :not(caption) > * > th {
+    color: var(--text-primary);
+}
+
+.main.dach-ds .form-control,
+.main.dach-ds .form-select,
+.main.dach-ds textarea.form-control {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-primary);
+}
+
+.main.dach-ds .form-control::placeholder,
+.main.dach-ds textarea.form-control::placeholder {
+    color: var(--input-placeholder);
+}
+
+.main.dach-ds .form-control:focus,
+.main.dach-ds .form-select:focus,
+.main.dach-ds textarea.form-control:focus {
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 0.2rem var(--focus-ring);
+    color: var(--text-primary);
+}
+
+.main.dach-ds .input-group-text {
+    background-color: color-mix(in srgb, var(--input-bg) 85%, var(--card-border));
+    border-color: var(--input-border);
+    color: var(--text-secondary);
+}
+
+.main.dach-ds .box,
+.main.dach-ds .box-body {
+    color: var(--text-secondary);
+}
+
+.main.dach-ds .box-title,
+.main.dach-ds .box-header {
+    color: var(--text-primary);
+}
+
+.main.dach-ds .dropdown-menu {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 12px 36px var(--shadow);
+    color: var(--text-primary);
+}
+
+.main.dach-ds .dropdown-item {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.main.dach-ds .dropdown-item:hover,
+.main.dach-ds .dropdown-item:focus {
+    background: var(--table-row-hover);
+    color: var(--text-primary);
+}
+
+.main.dach-ds .nav-tabs .dropdown-menu {
+    border-radius: var(--dach-form-radius-md, 12px);
+}
+
+.main.dach-ds .badge {
+    color: var(--text-primary);
+    border: 1px solid var(--card-border);
+}
+
+html[data-theme='light'] .main.dach-ds .text-black,
+html[data-theme='light'] .main.dach-ds .text-dark {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme='light'] .main.dach-ds .border-success {
+    border-color: color-mix(in srgb, #10b981 55%, var(--card-border)) !important;
+}
+
+/* ثيم فاتح — تباين إضافي للتبويبات والحقول المدمجة */
+html[data-theme='light'] .main.dach-ds .nav-tabs .nav-link {
+    color: var(--text-secondary);
+}
+
+html[data-theme='light'] .main.dach-ds .nav-tabs .nav-link.active {
+    color: var(--text-primary);
+}
+
+html[data-theme='light'] .main.dach-ds .form-control.dach-input,
+html[data-theme='light'] .main.dach-ds .form-select.dach-input {
+    color: var(--text-primary);
+    background-color: #fff;
+}
+
+html[data-theme='light'] .main.dach-ds .form-label.dach-form-group__label {
+    color: #0f172a;
+}

@@ -1,0 +1,1516 @@
+/**
+ * Split from dach-legacy-bridge.css — preserve cascade; do not reorder @import in dach-legacy.css.
+ * DataTables, filters, users table, modals
+ * Original monolith lines 1014–2484 (inclusive).
+ */
+
+/* ——— تحميل الجدول ——— */
+.main .datatable-blur {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--bg-gradient) 25%, rgba(0, 0, 0, 0.45));
+    backdrop-filter: blur(4px);
+    border-radius: inherit;
+}
+/* Livewire يضبط display على عنصر wire:loading */
+
+.main .spinner-border {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: dach-spin 0.75s linear infinite;
+    color: var(--accent-1);
+}
+.main .spinner-border.text-primary {
+    color: var(--accent-1) !important;
+}
+@keyframes dach-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.main .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 767.98px) {
+    .main .hidden-sm-down {
+        display: none !important;
+    }
+}
+
+/* ——— فلتر الجدول ——— */
+.main .dataTables_filter label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    width: 100%;
+    max-width: 320px;
+}
+.main .dataTables_length label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+/* ——— أخطاء التحقق ——— */
+.main .form-group.error .form-control,
+.main .form-group.error .form-select {
+    border-color: #ef4444;
+}
+.main .form-control.is-invalid,
+.main .form-select.is-invalid {
+    border-color: #ef4444;
+}
+.main .help-block {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: #f87171;
+}
+.main .help-block ul {
+    margin: 0;
+    padding-inline-start: 1.1rem;
+}
+
+/* ——— مجموعة أزرار / خانة اختيار رأس الجدول ——— */
+.main .btn-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.main .filled-in {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--accent-1);
+    cursor: pointer;
+}
+.main label[for="checkAllItems"] {
+    min-width: 1.1rem;
+    min-height: 1.1rem;
+    cursor: pointer;
+}
+
+/* ——— شريحة عنوان الصفحة (بدل رابط وهمي) ——— */
+.main .dach-title-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.45rem 0.9rem;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #fff;
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+/* ——— بطاقات إحصائيات لوحة المشتركين (DACH) ——— */
+.main .dach-admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+.main .dach-stat-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 16px 18px 18px;
+    background: linear-gradient(
+        155deg,
+        color-mix(in srgb, var(--card-bg) 82%, var(--accent-1) 18%),
+        color-mix(in srgb, var(--card-bg) 94%, transparent)
+    );
+    border: 1px solid color-mix(in srgb, var(--accent-1) 28%, var(--card-border));
+    box-shadow: 0 10px 32px var(--shadow);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.main .dach-stat-card::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+    opacity: 0.85;
+}
+.main .dach-stat-card:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--accent-1) 55%, var(--card-border));
+    box-shadow: 0 16px 44px var(--accent-glow);
+}
+.main .dach-stat-card--accent {
+    background: linear-gradient(
+        155deg,
+        color-mix(in srgb, var(--card-bg) 70%, var(--accent-1) 30%),
+        color-mix(in srgb, var(--card-bg) 90%, transparent)
+    );
+}
+.main .dach-stat-card__ico {
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+.main .dach-stat-card__value {
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.main .dach-stat-card__value--row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.2em;
+    flex-wrap: wrap;
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+}
+.main .dach-stat-card__num {
+    font-size: 1.55rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.main .dach-stat-card__sep {
+    font-weight: 800;
+    color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
+    font-size: 1.1rem;
+}
+.main .dach-stat-card__label {
+    margin-top: 8px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+}
+.main .dach-stat-card__sub {
+    margin-top: 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    line-height: 1.35;
+}
+
+.main .me-1 {
+    margin-inline-end: 0.35rem !important;
+}
+.main .me-3 {
+    margin-inline-end: 1rem !important;
+}
+.main .ms-2 {
+    margin-inline-start: 0.5rem !important;
+}
+.main .flex-grow-1 {
+    flex-grow: 1 !important;
+}
+.main .rounded-circle {
+    border-radius: 50% !important;
+}
+
+/* ——— شريط أدوات الجدول (فلاتر + بحث) — يمنع تكديس الأعمدة والمربعات البيضاء ——— */
+.main .dach-datatable-navbar {
+    align-items: stretch;
+    gap: 12px 16px;
+    /* فوق جسم الجدول حتى تظهر لوحة «خيارات» المنسدلة فوق الصفوف وليس تحتها */
+    position: relative;
+    z-index: 10250;
+    overflow: visible;
+}
+.main .dach-datatable-navbar > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+.main .dataTables_wrapper .btn.btn-success {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.main .dach-filter-toolbar {
+    width: 100%;
+    margin-top: 2px;
+    position: relative;
+    z-index: 6;
+}
+/* صناديق البطاقة تقصّ قوائم منسدلة مخصّصة — السماح بالظهور فوق الجدول عند وجود شريط فلاتر */
+.main .box:has(.dach-filter-toolbar) {
+    overflow: visible;
+}
+.main .dach-filter-toolbar__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--card-bg) 88%, var(--accent-1) 12%);
+    border: 1px solid color-mix(in srgb, var(--accent-1) 28%, var(--card-border));
+    box-shadow: 0 4px 16px var(--shadow);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.main .dach-filter-toolbar__inner:focus-within {
+    border-color: color-mix(in srgb, var(--accent-1) 55%, var(--card-border));
+    box-shadow: 0 0 0 2px var(--accent-glow), 0 6px 20px var(--shadow);
+    background: color-mix(in srgb, var(--card-bg) 82%, var(--accent-1) 18%);
+}
+.main .dach-filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: min(120px, 100%);
+    flex: 1 1 min(140px, 32%);
+    max-width: 100%;
+}
+.main .dach-filter-field--action {
+    flex: 0 0 auto;
+    min-width: auto;
+    align-items: stretch;
+}
+.main .dach-filter-field__label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.2;
+}
+.main .dach-filter-field__label--ghost {
+    visibility: hidden;
+}
+.main .dach-filter-select,
+.main .dach-filter-slot .form-select {
+    width: 100%;
+    border-radius: 8px;
+    padding: 4px 8px;
+    min-height: 32px;
+    line-height: 1.25;
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--text-primary);
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    accent-color: var(--accent-1);
+    appearance: auto;
+    -webkit-appearance: menulist;
+}
+/* قوائم النظام للـ select: تفضيل الوضع الداكن مع ثيمات DACH الداكنة */
+[data-theme='dark'] .main .dach-filter-toolbar .dach-filter-select,
+[data-theme='blue'] .main .dach-filter-toolbar .dach-filter-select,
+[data-theme='purple'] .main .dach-filter-toolbar .dach-filter-select,
+[data-theme='green'] .main .dach-filter-toolbar .dach-filter-select,
+[data-theme='orange'] .main .dach-filter-toolbar .dach-filter-select,
+[data-theme='red'] .main .dach-filter-toolbar .dach-filter-select,
+[data-theme='gold'] .main .dach-filter-toolbar .dach-filter-select,
+[data-theme='cyan'] .main .dach-filter-toolbar .dach-filter-select {
+    color-scheme: dark;
+}
+[data-theme='light'] .main .dach-filter-toolbar .dach-filter-select {
+    color-scheme: light;
+}
+
+/* قوائم Bootstrap المنسدلة داخل المحتوى — بدل الخلفية البيضاء الافتراضية */
+.main .dropdown-menu {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 32px var(--shadow) !important;
+    padding: 6px 0 !important;
+}
+.main .dropdown-item {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+}
+.main .dropdown-item:hover,
+.main .dropdown-item:focus {
+    background: color-mix(in srgb, var(--accent-1) 18%, var(--input-bg)) !important;
+    color: var(--text-primary) !important;
+}
+.main .dropdown-divider {
+    border-color: var(--card-border) !important;
+}
+.main .dach-filter-select:focus,
+.main .dach-filter-slot .form-select:focus {
+    outline: none;
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+.main .dach-filter-slot {
+    flex: 1 1 min(160px, 36%);
+    min-width: min(140px, 100%);
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.main .dach-filter-slot .dach-filter-field {
+    flex: 1 1 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+.main .dach-filter-refresh {
+    height: 32px;
+    min-width: 34px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.45rem;
+}
+/* إن وُجد bootstrap-select داخل الفلاتر (صفحات أخرى) */
+.main .dach-filter-toolbar .bootstrap-select .dropdown-menu {
+    max-height: min(48vh, 280px);
+    overflow-y: auto;
+    background: color-mix(in srgb, var(--input-bg) 94%, var(--card-bg)) !important;
+    border: 1px solid var(--input-border) !important;
+    border-radius: 10px;
+    box-shadow: 0 10px 28px var(--shadow);
+}
+.main .dach-filter-toolbar .bootstrap-select .dropdown-menu > li > a,
+.main .dach-filter-toolbar .bootstrap-select .dropdown-menu .dropdown-item {
+    color: var(--text-primary) !important;
+}
+.main .dach-filter-toolbar .bootstrap-select .dropdown-menu > li > a:hover,
+.main .dach-filter-toolbar .bootstrap-select .dropdown-menu > li > a:focus,
+.main .dach-filter-toolbar .bootstrap-select .dropdown-menu .dropdown-item:hover,
+.main .dach-filter-toolbar .bootstrap-select .dropdown-menu .dropdown-item:focus {
+    background: color-mix(in srgb, var(--accent-1) 18%, var(--input-bg)) !important;
+    color: var(--text-primary) !important;
+}
+.main .dach-filter-toolbar .bootstrap-select .dropdown-toggle {
+    min-height: 32px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 0.78rem;
+    background: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--input-border) !important;
+}
+
+/* ——— صفحة المشتركين: شريط إجراءات + أسطورة الحالات (مطابقة ترتيب المرجع) ——— */
+.main .dach-users-toolbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 16px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.main .dach-users-toolbar-row__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+}
+.main .dach-users-toolbar-row__search {
+    flex: 0 1 min(360px, 100%);
+    min-width: min(220px, 100%);
+}
+.main .dach-users-toolbar-row__search .dach-datatable-search__label {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+}
+.main .dach-users-toolbar-row__search .dach-datatable-search__label-text {
+    flex-shrink: 0;
+}
+.main .dach-users-toolbar-row__search .dach-datatable-search__field {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.main .dach-users-toolbar-btn {
+    border-radius: 14px;
+    padding: 0.5rem 1.05rem;
+    font-size: 0.88rem;
+}
+.main .dach-users-legend-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 12px;
+    width: 100%;
+    padding-top: 8px;
+    margin-top: 4px;
+    border-top: 1px solid var(--card-border);
+}
+.main .dach-users-legend-row__menus {
+    flex: 0 0 auto;
+    overflow: visible;
+    position: relative;
+    z-index: 10260;
+}
+.main .dach-users-legend-row__stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px 16px;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.77rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+.main .dach-users-legend-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+.main .dach-users-legend-stat i {
+    flex-shrink: 0;
+}
+.main .dach-users-legend-stat--client i,
+.main .dach-users-legend-stat--client span {
+    color: #22c55e !important;
+}
+.main .dach-users-legend-stat--system i,
+.main .dach-users-legend-stat--system span {
+    color: #3b82f6 !important;
+}
+.main .dach-users-legend-stat--speed-down i,
+.main .dach-users-legend-stat--speed-down span {
+    color: #a855f7 !important;
+}
+.main .dach-users-legend-btn {
+    border-radius: 12px;
+}
+.main .dach-users-menus-flex {
+    gap: 8px;
+}
+/* شريط «خيارات / ترتيب الأعمدة» يبقى سطراً واحداً — بدون nowrap على اللوحة السوداء */
+.main .dach-users-menus-flex--toolbar {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+/* بحث عمود الجدول */
+.main .dach-datatable-search.dach-datatable-search {
+    width: 100%;
+    max-width: 100%;
+}
+.main .dach-datatable-search .dach-datatable-search__label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    font-weight: 800;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+.main .dach-datatable-search .dach-datatable-search__field {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.main .dach-datatable-search .dach-datatable-search__field:focus-within {
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+.main .dach-datatable-search .dach-datatable-search__icon {
+    font-size: 0.88rem;
+    opacity: 0.88;
+    flex-shrink: 0;
+}
+.main .dach-datatable-search .dach-datatable-search__input {
+    flex: 1;
+    min-width: 0;
+    border: none !important;
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    font-size: 0.8rem;
+    min-height: 28px;
+    padding: 2px 0;
+    box-shadow: none !important;
+}
+.main .dach-datatable-search .dach-datatable-search__input::placeholder {
+    color: var(--text-muted);
+}
+.main .dach-datatable-search .dach-datatable-search__input:focus {
+    outline: none;
+}
+
+/* إلغاء قواعد عامة قد تضغط مربع البحث */
+.main .dach-datatable-search.dach-datatable-search label {
+    max-width: none;
+}
+
+/* ——— صفحة المشتركين: جدول بنمط «بلاط» ثلاثي الأبعاد (سكيومورفيك) ——— */
+.main .dach-users-table-3d .dach-datatable-search__field {
+    border-radius: 8px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--input-bg) 70%, #fff 30%), var(--input-bg));
+    border: 1px solid var(--input-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -2px 4px rgba(0, 0, 0, 0.06),
+        0 1px 2px rgba(0, 0, 0, 0.06);
+}
+[data-theme="dark"] .main .dach-users-table-3d .dach-datatable-search__field {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--input-bg) 55%, #fff 8%), var(--input-bg));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -2px 5px rgba(0, 0, 0, 0.35),
+        0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.main .dach-users-table-3d .dach-users-toolbar-btn {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bs-success, #22c55e) 88%, #fff 12%), var(--bs-success, #16a34a));
+    border: 1px solid color-mix(in srgb, var(--bs-success, #16a34a) 70%, #000 30%);
+    border-bottom-width: 3px;
+    border-radius: 8px;
+    color: #fff !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 0 rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+.main .dach-users-table-3d .dach-users-toolbar-btn:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+}
+.main .dach-users-table-3d .dach-users-toolbar-btn:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.main .dach-users-table-3d a.btn-primary.dach-users-toolbar-btn {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bs-primary, #3b82f6) 88%, #fff 12%), var(--bs-primary, #2563eb));
+    border-color: color-mix(in srgb, var(--bs-primary, #2563eb) 65%, #000 35%);
+}
+
+.main .dach-users-table-3d .table-responsive {
+    background: linear-gradient(180deg, #f0f2f5, #e4e7ec);
+    border-radius: 12px;
+    border: 1px solid #c5cad3;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+    /* بدون حشو كبير حول الجدول — يقلل إحساس «إطار» منفصل */
+    padding: 6px 4px 8px;
+    /* لا نقطع القوائم المنسدلة عمودياً فوق صفوف الجدول */
+    overflow-x: auto;
+    overflow-y: visible;
+}
+[data-theme="dark"] .main .dach-users-table-3d .table-responsive {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--card-bg) 92%, #000), color-mix(in srgb, var(--card-bg) 75%, #000));
+    border-color: var(--card-border);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* صفحة المشتركين (Livewire): جدول بعرض الشاشة على الموبايل/التابلت + تقليل الهوامش الجانبية */
+@media (max-width: 767.98px) {
+    /* تقليل حشو المحتوى العام على الشاشات الضيقة (صفحة المشتركين تستثني الجانبين أدناه) */
+    .main {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .main:has([data-dach-users-index-lw-id]) {
+        padding-inline: 0;
+        padding-block-start: 10px;
+        padding-block-end: 24px;
+    }
+    .main:has([data-dach-users-index-lw-id]) > .topbar {
+        padding-left: max(10px, env(safe-area-inset-left, 0px));
+        padding-right: max(10px, env(safe-area-inset-right, 0px));
+    }
+    .main:has([data-dach-users-index-lw-id]) > .alert-dach {
+        margin-inline: 12px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-index-table-wrap .row {
+        margin-inline: 0;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-index-table-wrap .row > .col-12 {
+        padding-inline: 0;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-index-table-wrap .box {
+        border-radius: 0;
+        border-inline-width: 0;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-index-table-wrap .box-body {
+        padding-inline: 0 !important;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-index-table-wrap .dataTables_wrapper.container-fluid {
+        padding-inline: 0 !important;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .table-responsive {
+        border-radius: 0;
+        border-inline: none;
+        margin-inline: 0;
+        padding-inline: 0;
+    }
+    .main [data-dach-users-index-lw-id] .dach-datatable-navbar {
+        padding-inline: 10px;
+    }
+}
+
+/* نفس جدول سطح المكتب على الموبايل: تمرير أفقي + واجهة أصغر لقائمة المشتركين */
+@media (max-width: 767.98px) {
+    .main .dach-users-index-table-wrap .table-responsive {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        /* إخفاء «السلايدر» الأفقي السفلي — التمرير الأفقي باللمس يبقى */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .main .dach-users-index-table-wrap .table-responsive::-webkit-scrollbar {
+        height: 0 !important;
+        width: 0 !important;
+        display: none;
+    }
+    .main .dach-users-index-table-wrap .dach-users-toolbar-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .main .dach-users-index-table-wrap .dach-users-toolbar-row__actions,
+    .main .dach-users-index-table-wrap .dach-users-toolbar-row__search {
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+    /* تصغير شامل لصفحة المشتركين (Livewire) */
+    .main [data-dach-users-index-lw-id] .box-body {
+        padding-top: 0.35rem !important;
+        padding-bottom: 0.35rem !important;
+    }
+    .main [data-dach-users-index-lw-id] .dach-datatable-navbar {
+        margin-top: 4px !important;
+        margin-bottom: 8px !important;
+    }
+    .main [data-dach-users-index-lw-id] .table-responsive.mt-5 {
+        margin-top: 0.65rem !important;
+    }
+    .main [data-dach-users-index-lw-id] .dach-admin-stats {
+        grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-stat-card {
+        padding: 10px 12px 12px;
+        border-radius: 14px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-stat-card__ico {
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-stat-card__value,
+    .main [data-dach-users-index-lw-id] .dach-stat-card__num {
+        font-size: 1.15rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-stat-card__label {
+        margin-top: 4px;
+        font-size: 0.68rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-stat-card__sub {
+        font-size: 0.62rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-toolbar-row {
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-toolbar-row__actions {
+        gap: 6px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-toolbar-btn {
+        padding: 0.36rem 0.72rem;
+        font-size: 0.76rem;
+        border-radius: 10px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .dach-users-toolbar-btn {
+        border-bottom-width: 2px;
+        border-radius: 7px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 2px 0 rgba(0, 0, 0, 0.1), 0 3px 5px rgba(0, 0, 0, 0.12);
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-legend-row {
+        padding-top: 5px;
+        margin-top: 2px;
+        gap: 5px 8px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-legend-row__stats {
+        font-size: 0.65rem;
+        gap: 5px 8px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-legend-stat {
+        gap: 3px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-columns-btn {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.55rem;
+        border-radius: 9px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-columns-btn--columns-wide {
+        padding: 0.36rem 0.7rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-datatable-search .dach-datatable-search__label {
+        font-size: 0.62rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-datatable-search .dach-datatable-search__field {
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-datatable-search .dach-datatable-search__input {
+        font-size: 0.72rem;
+        min-height: 24px;
+    }
+    .main [data-dach-users-index-lw-id] .dach-datatable-search .dach-datatable-search__icon {
+        font-size: 0.78rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .table {
+        font-size: 0.76rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .table thead th {
+        padding: 0.3rem 0.26rem;
+        font-size: 0.7rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .table tbody td {
+        padding: 0.26rem 0.3rem;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .table .badge {
+        font-size: 0.68em;
+        padding: 0.2em 0.48em;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .dach-user-connection-toggle.dropdown-toggle,
+    .main [data-dach-users-index-lw-id] .dach-users-table-3d .dach-user-connection-toggle.user-type {
+        font-size: 0.78rem !important;
+        padding: 0.32em 0.48em 0.32em 0.4em !important;
+        border-radius: 8px !important;
+        border-bottom-width: 2px !important;
+    }
+    .main [data-dach-users-index-lw-id] .dach-users-menus-flex {
+        gap: 5px;
+    }
+    .main [data-dach-users-index-lw-id] .dataTables_length label,
+    .main [data-dach-users-index-lw-id] .dataTables_length {
+        font-size: 0.72rem;
+    }
+    .main [data-dach-users-index-lw-id] .dataTables_length .form-select {
+        font-size: 0.7rem;
+        min-height: 30px;
+        padding-block: 0.2rem;
+    }
+}
+
+/* دمج الحدود بدون فراغات بين الخلايا (لا شبكة داكنة بين البلاطات) */
+.main .dach-users-table-3d .table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: transparent;
+    border-radius: 8px;
+    /* visible حتى لا تُقصّ قائمة خيارات المشترك وتُرسَم خلايا «الاسم» encima */
+    overflow: visible;
+}
+.main .dach-users-table-3d .table thead th {
+    background: linear-gradient(180deg, #ffffff 0%, #dfe3e8 100%);
+    color: #1e293b !important;
+    border: 1px solid #b8bec8;
+    border-radius: 0;
+    /* ظل داخلي فقط — أقل «فصل» بصري بين الخلايا */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -2px 4px rgba(0, 0, 0, 0.06);
+    padding: 0.65rem 0.55rem;
+    vertical-align: middle;
+}
+[data-theme="dark"] .main .dach-users-table-3d .table thead th {
+    background: linear-gradient(180deg, #475569, #334155);
+    color: #f1f5f9 !important;
+    border-color: #64748b;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -2px 5px rgba(0, 0, 0, 0.28);
+}
+.main .dach-users-table-3d .table thead th a {
+    color: inherit !important;
+}
+.main .dach-users-table-3d .table thead th .badge {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent-1) 35%, #fff), color-mix(in srgb, var(--accent-1) 65%, #64748b));
+    color: #0f172a !important;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 999px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 2px 3px rgba(0, 0, 0, 0.15);
+    padding: 0.35em 0.75em;
+}
+[data-theme="dark"] .main .dach-users-table-3d .table thead th .badge {
+    color: #f8fafc !important;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent-1) 55%, #334155), #1e293b);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* صف المشترك: السماح بظهور القائمة المنسدلة فوق الخلايا دون قصّ — القائمة fixed لا توسّع الصف */
+.main .dach-users-table-3d .table tbody td.user-status {
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+}
+/*
+ * قائمة خيارات المشترك مستثناة من `.dropdown-menu:not(.dach-user-actions-dropdown)` التي تضع position:absolute.
+ * بدون position مطلق تبقى في تدفق المستند وتمدّد خلية الجدول (مئات البكسل).
+ * `.dropdown` له position:relative — نثبت القائمة تحت الشارة دون توسيع <td>.
+ */
+.main table td.user-status .dropdown-menu.dach-user-actions-dropdown {
+    /* لا position/transform بـ !important — يترك Bootstrap + Popper (strategy:fixed من dach/livewire-hooks) يعرض القائمة كاملة */
+    margin-top: 6px;
+    min-width: min(240px, 92vw);
+}
+/* جدول المشتركين بدون غلاف dach-users-table-3d: خلية الإجراءات لا تقص القائمة */
+.main [data-dach-users-index-lw-id] .table tbody td.user-status {
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+}
+.main [data-dach-users-index-lw-id] .table tbody td.user-status:has(.dropdown-menu.show) {
+    z-index: 10070;
+}
+.main table .dropdown-menu {
+    max-height: min(70vh, 520px);
+    overflow-y: auto;
+}
+/* Bootstrap 5 يضع .show على التبديل والقائمة — لا على `.dropdown` الأب */
+.main .dach-users-table-3d .table tbody td.user-status:has(.dropdown-menu.show) {
+    z-index: 10070;
+}
+/* قائمة خيارات المشترك: خلفية معتمة بالكامل (بدون blur / بدون شفافية) */
+.main .dach-user-actions-dropdown {
+    background: #0b0a12 !important;
+    background-color: #0b0a12 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(148, 163, 184, 0.55) !important;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.85) !important;
+    isolation: isolate;
+    mix-blend-mode: normal;
+    /* فوق الجدول والمودالات المعتادة — Popper يضع position:fixed عند strategy:fixed */
+    z-index: 11000 !important;
+    opacity: 1 !important;
+}
+.main .dach-users-table-3d .dach-user-actions-dropdown.show {
+    z-index: 11050 !important;
+}
+.main .dach-user-actions-dropdown .dropdown-item {
+    background: #0b0a12 !important;
+    color: #e2e8f0 !important;
+}
+.main .dach-user-actions-dropdown .dropdown-item:hover,
+.main .dach-user-actions-dropdown .dropdown-item:focus {
+    background: #16141f !important;
+    color: #f8fafc !important;
+}
+[data-theme='light'] .main .dach-user-actions-dropdown {
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22) !important;
+}
+[data-theme='light'] .main .dach-user-actions-dropdown .dropdown-item {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+}
+[data-theme='light'] .main .dach-user-actions-dropdown .dropdown-item:hover,
+[data-theme='light'] .main .dach-user-actions-dropdown .dropdown-item:focus {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+/* لوحة «خيارات» للمشتركين المحددين — فوق جسم الجدول */
+.main .dach-users-bulk-options-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    inset-inline-start: 0;
+    z-index: 10300 !important;
+    min-width: min(520px, 96vw);
+    max-width: min(720px, 98vw);
+    width: max-content;
+    padding: 18px 16px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.55);
+    background: #0b0a12;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.85);
+    white-space: normal;
+    overflow: visible;
+}
+[data-theme='light'] .main .dach-users-bulk-options-panel {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22);
+}
+.main .dach-users-bulk-options-panel__grid {
+    --bs-gutter-x: 14px;
+    --bs-gutter-y: 12px;
+    margin-inline: 0;
+}
+.main .dach-users-bulk-options-panel .btn {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+    min-height: 3rem;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.84rem;
+    font-weight: 800;
+    border-radius: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    word-break: break-word;
+    hyphens: auto;
+}
+.main .dach-users-bulk-options-panel .btn i {
+    flex-shrink: 0;
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.main .dach-users-table-3d .table tbody td {
+    background: linear-gradient(180deg, #ffffff 0%, #e2e5ea 100%);
+    color: #0f172a;
+    border: 1px solid #b8bec8;
+    border-radius: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 -2px 3px rgba(0, 0, 0, 0.05);
+    vertical-align: middle;
+}
+[data-theme="dark"] .main .dach-users-table-3d .table tbody td {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--card-bg) 88%, #94a3b8), color-mix(in srgb, var(--card-bg) 55%, #0f172a));
+    color: color-mix(in srgb, var(--text-primary) 94%, #cbd5e1);
+    border-color: #64748b;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -2px 5px rgba(0, 0, 0, 0.22);
+}
+.main .dach-users-table-3d .table-striped tbody tr:nth-of-type(odd) td,
+.main .dach-users-table-3d .table-striped tbody tr:nth-of-type(even) td {
+    background: linear-gradient(180deg, #ffffff 0%, #e2e5ea 100%);
+}
+[data-theme="dark"] .main .dach-users-table-3d .table-striped tbody tr:nth-of-type(odd) td,
+[data-theme="dark"] .main .dach-users-table-3d .table-striped tbody tr:nth-of-type(even) td {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--card-bg) 88%, #94a3b8), color-mix(in srgb, var(--card-bg) 55%, #0f172a));
+}
+/* تمييز الصف الحالي: يظهر على الهاتف (لمس/تركيز) والكمبيوتر (hover) */
+.main .dach-users-table-3d .table-hover tbody tr.user-info:hover td,
+.main .dach-users-table-3d .table-hover tbody tr.user-info:focus-within td {
+    filter: brightness(1.05);
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--accent-1) 55%, transparent),
+        inset 0 0 22px color-mix(in srgb, var(--accent-1) 12%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    transition: filter 0.15s ease, box-shadow 0.15s ease;
+}
+[data-theme='dark'] .main .dach-users-table-3d .table-hover tbody tr.user-info:hover td,
+[data-theme='dark'] .main .dach-users-table-3d .table-hover tbody tr.user-info:focus-within td {
+    filter: brightness(1.14);
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--accent-1) 50%, transparent),
+        inset 0 0 28px color-mix(in srgb, var(--accent-1) 18%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+@media (hover: none) {
+    .main .dach-users-table-3d .table-hover tbody tr.user-info:active td {
+        filter: brightness(1.12);
+        box-shadow:
+            inset 0 0 0 2px color-mix(in srgb, var(--accent-1) 60%, transparent),
+            inset 0 0 26px color-mix(in srgb, var(--accent-1) 16%, transparent);
+    }
+}
+
+.main .dach-users-table-3d .table tbody td a {
+    color: #1d4ed8 !important;
+    font-weight: 800;
+}
+[data-theme="dark"] .main .dach-users-table-3d .table tbody td a {
+    color: color-mix(in srgb, var(--accent-1) 75%, #fff) !important;
+}
+
+/* شارات داخل الجدول: حبات «pill» بارزة */
+.main .dach-users-table-3d .table .badge {
+    border-radius: 999px;
+    font-weight: 800;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 3px rgba(0, 0, 0, 0.2);
+    padding: 0.38em 0.75em;
+}
+[data-theme="dark"] .main .dach-users-table-3d .table .badge {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.45);
+    border-color: rgba(0, 0, 0, 0.35);
+}
+.main .dach-users-table-3d .table .badge-info {
+    background: linear-gradient(180deg, #38bdf8, #0284c7) !important;
+    color: #fff !important;
+}
+.main .dach-users-table-3d .table .badge-primary {
+    background: linear-gradient(180deg, #60a5fa, #1d4ed8) !important;
+    color: #fff !important;
+}
+.main .dach-users-table-3d .table .badge-warning {
+    background: linear-gradient(180deg, #fcd34d, #d97706) !important;
+    color: #422006 !important;
+}
+.main .dach-users-table-3d .table .badge-success {
+    background: linear-gradient(180deg, #4ade80, #15803d) !important;
+    color: #fff !important;
+}
+.main .dach-users-table-3d .table .badge-danger {
+    background: linear-gradient(180deg, #f87171, #b91c1c) !important;
+    color: #fff !important;
+}
+.main .dach-users-table-3d .table .badge-dark {
+    background: linear-gradient(180deg, #64748b, #1e293b) !important;
+    color: #f8fafc !important;
+}
+.main .dach-users-table-3d .table .badge.bg-dark {
+    background: linear-gradient(180deg, #64748b, #0f172a) !important;
+    color: #f8fafc !important;
+}
+/* كان النص أبيض على خلفية فاتحة — غير مقروء على البلاط الفاتح */
+.main .dach-users-table-3d .table tbody td .text-white {
+    color: #166534 !important;
+    font-weight: 800;
+}
+[data-theme="dark"] .main .dach-users-table-3d .table tbody td .text-white {
+    color: #86efac !important;
+}
+
+/* نوع الاتصال: زر (dropdown سابقاً / مودال الآن) + caret للمنسدل فقط */
+.main .dach-users-table-3d .dach-user-connection-toggle.dropdown-toggle,
+.main .dach-users-menu-wrap .dach-user-connection-toggle.dropdown-toggle,
+.main .dach-users-table-3d .dach-user-connection-toggle.user-type,
+.main .dach-users-menu-wrap .dach-user-connection-toggle.user-type {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+    font-size: 0.98rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25;
+    border-radius: 10px !important;
+    padding: 0.48em 0.72em 0.48em 0.55em !important;
+    border: 1px solid rgba(0, 0, 0, 0.22) !important;
+    border-bottom-width: 3px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 0 rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.28em;
+    text-align: inherit;
+}
+.main .dach-users-table-3d .dach-user-connection-toggle.dropdown-toggle::after,
+.main .dach-users-menu-wrap .dach-user-connection-toggle.dropdown-toggle::after {
+    display: inline-block !important;
+    margin-inline-start: 0.2em;
+    margin-inline-end: 0;
+    vertical-align: middle;
+    content: '';
+    border-top: 0.32em solid;
+    border-inline-end: 0.28em solid transparent;
+    border-bottom: 0;
+    border-inline-start: 0.28em solid transparent;
+    opacity: 0.95;
+}
+.main .dach-users-table-3d .dach-user-connection-toggle.dropdown-toggle:active,
+.main .dach-users-menu-wrap .dach-user-connection-toggle.dropdown-toggle:active,
+.main .dach-users-table-3d .dach-user-connection-toggle.user-type:active,
+.main .dach-users-menu-wrap .dach-user-connection-toggle.user-type:active {
+    transform: translateY(1px);
+    border-bottom-width: 2px !important;
+}
+
+.main .dach-users-table-3d td.user-status .dach-users-menu-wrap .badge.badge-dark {
+    font-size: 0.95rem;
+    padding: 0.42em 0.78em !important;
+}
+.main .dach-users-table-3d td.user-status .user-get-status .fa {
+    font-size: 1.12rem;
+}
+
+/* حجرة البطارية: منحدر غائر (inset) */
+.main .dach-users-table-3d .quta-battery-v__body {
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.28), inset 0 -1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 rgba(255, 255, 255, 0.35);
+    background: linear-gradient(180deg, #d1d5db, #9ca3af);
+}
+[data-theme="dark"] .main .dach-users-table-3d .quta-battery-v__body {
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.55), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+.main .dach-users-table-3d .quta-progress-badge {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.main .dach-users-table-3d .pagination .page-link {
+    border-radius: 6px;
+    background: linear-gradient(180deg, #fff, #e5e7eb);
+    box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0, 0, 0, 0.12);
+    border: 1px solid #c5cad3;
+}
+.main .dach-users-table-3d .pagination .page-item.active .page-link,
+.main .dach-users-table-3d .pagination .page-link:hover {
+    background: linear-gradient(180deg, var(--accent-1), var(--accent-2, var(--accent-1)));
+    border-color: transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ——— حالة الجلسة (واي فاي + توهج) ——— */
+.main .dach-wifi-session {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-align: start;
+    max-width: 100%;
+}
+.main .dach-wifi-session--featured {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card-bg) 82%, transparent);
+    border: 1px solid color-mix(in srgb, var(--card-border) 90%, transparent);
+    backdrop-filter: blur(10px);
+}
+.main .dach-wifi-session__graphic {
+    position: relative;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+}
+.main .dach-wifi-session--featured .dach-wifi-session__graphic {
+    width: 52px;
+    height: 52px;
+}
+.main .dach-wifi-session__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 0 2px rgba(34, 211, 238, 0.85)) drop-shadow(0 0 6px rgba(52, 211, 153, 0.55));
+}
+.main .dach-wifi-session--offline .dach-wifi-session__svg {
+    filter: drop-shadow(0 0 2px rgba(248, 113, 113, 0.25));
+}
+.main .dach-wifi-session__glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.45), transparent 72%);
+    pointer-events: none;
+    animation: dach-wifi-glow 1.6s ease-in-out infinite;
+}
+@keyframes dach-wifi-glow {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.55;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.65);
+        opacity: 0;
+    }
+}
+.main .dach-wifi-session--online .dach-wifi-session__wave {
+    fill: none;
+    /* سماوي → زمردي بصرياً عبر التوهج (بدون id مكرر بين الصفوف) */
+    stroke: #2dd4bf;
+    stroke-width: 3;
+    stroke-linecap: round;
+    transform-origin: 30px 48px;
+    animation: dach-wifi-wave 1.5s ease-in-out infinite;
+}
+.main .dach-wifi-session--online svg > .dach-wifi-session__wave:nth-child(1) {
+    animation-delay: 0s;
+}
+.main .dach-wifi-session--online svg > .dach-wifi-session__wave:nth-child(2) {
+    animation-delay: 0.18s;
+}
+.main .dach-wifi-session--online svg > .dach-wifi-session__wave:nth-child(3) {
+    animation-delay: 0.36s;
+}
+@keyframes dach-wifi-wave {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.96);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+.main .dach-wifi-session--online .dach-wifi-session__dot {
+    fill: #34d399;
+    transform-origin: 30px 48px;
+    animation: dach-wifi-dot 1.5s ease-in-out infinite 0.45s;
+}
+@keyframes dach-wifi-dot {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+}
+.main .dach-wifi-session__wave--muted {
+    fill: none;
+    stroke: #f87171;
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0.38;
+}
+.main .dach-wifi-session__dot--muted {
+    fill: #f87171;
+    opacity: 0.4;
+}
+.main .dach-wifi-session__cross {
+    stroke: #ef4444;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    animation: dach-wifi-cross 1.5s ease-in-out infinite;
+}
+.main .dach-wifi-session--offline svg > .dach-wifi-session__cross:nth-child(5) {
+    animation-delay: 0s;
+}
+.main .dach-wifi-session--offline svg > .dach-wifi-session__cross:nth-child(6) {
+    animation-delay: 0.12s;
+}
+@keyframes dach-wifi-cross {
+    0%,
+    100% {
+        opacity: 0.65;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+.main .dach-wifi-session__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-width: 0;
+}
+.main .dach-wifi-session--featured .dach-wifi-session__meta {
+    align-items: flex-end;
+}
+.main .dach-wifi-session__label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.2;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.main .dach-wifi-session--online .dach-wifi-session__label {
+    color: #6ee7b7;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.18);
+}
+.main .dach-wifi-session--offline .dach-wifi-session__label {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.35);
+}
+.main .dach-wifi-session__uptime {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--text-secondary) 88%, #fbbf24);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.main .dach-wifi-session--compact .dach-wifi-session__label {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+}
+.main .dach-wifi-session--compact .dach-wifi-session__meta {
+    gap: 0;
+}
+.main .dach-wifi-session--compact {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+[data-theme="light"] .main .dach-wifi-session--online .dach-wifi-session__label {
+    color: #047857;
+    background: rgba(16, 185, 129, 0.12);
+}
+[data-theme="light"] .main .dach-wifi-session--offline .dach-wifi-session__label {
+    color: #b91c1c;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* ——— مشتركين: أزرار خيارات / ترتيب أعمدة + مودال ترتيب الأعمدة ——— */
+.main .dach-users-columns-btn {
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #fff !important;
+    padding: 0.45rem 0.85rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+.main .dach-users-columns-btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+.main .dach-users-columns-btn--options {
+    background: linear-gradient(135deg, #a78bfa, #7c3aed) !important;
+}
+.main .dach-users-columns-btn--columns {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+}
+.main .dach-users-columns-btn--columns-wide {
+    border-radius: 999px;
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9) !important;
+    padding: 0.55rem 1rem;
+}
+
+/* مودال ترتيب الأعمدة (#userOptionalBoxModal قد يكون خارج .main) */
+#userOptionalBoxModal .dach-edit-columns {
+    background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 42%, #172554 100%);
+    border-radius: 12px;
+}
+#userOptionalBoxModal:has(.dach-edit-columns) .modal-content {
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    background: transparent;
+}
+.dach-edit-columns {
+    padding: 1.25rem 1.35rem 1.1rem;
+    color: #e2e8f0;
+    text-align: right;
+}
+.dach-edit-columns__title {
+    margin: 0 0 0.35rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fcd34d;
+    letter-spacing: 0.02em;
+}
+.dach-edit-columns__hint {
+    margin: 0 0 1rem;
+    font-size: 0.86rem;
+    color: #a5b4fc;
+    line-height: 1.5;
+}
+.dach-edit-columns__hint-accent {
+    color: #38bdf8;
+    font-weight: 800;
+}
+.dach-edit-columns__table-wrap {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(15, 23, 42, 0.55);
+}
+.dach-edit-columns__table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+}
+.dach-edit-columns__table thead th {
+    padding: 0.55rem 0.75rem;
+    font-weight: 800;
+    color: #cbd5e1;
+    background: rgba(30, 41, 59, 0.85);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+.dach-edit-columns__table tbody td {
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.65);
+    color: #f1f5f9;
+}
+.dach-edit-columns__table tbody tr:last-child td {
+    border-bottom: none;
+}
+.dach-edit-columns__check-cell {
+    width: 3.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+.dach-edit-columns__nestable {
+    margin-top: 0.25rem;
+}
+.dach-edit-columns__dd-handle {
+    background: linear-gradient(180deg, #475569, #334155) !important;
+    color: #38bdf8 !important;
+    border-radius: 8px 0 0 8px;
+}
+.dach-edit-columns__dd-content {
+    background: rgba(30, 41, 59, 0.9) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(148, 163, 184, 0.2) !important;
+    font-weight: 700;
+}
+.dach-edit-columns__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 1.15rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+}
+.dach-edit-columns__btn {
+    border: none;
+    border-radius: 999px;
+    padding: 0.45rem 1.25rem;
+    font-weight: 800;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.12s ease;
+}
+.dach-edit-columns__btn:hover {
+    filter: brightness(1.05);
+}
+.dach-edit-columns__btn--cancel {
+    background: linear-gradient(135deg, #fb7185, #e11d48);
+    color: #fff;
+}
+.dach-edit-columns__btn--next,
+.dach-edit-columns__btn--save {
+    background: linear-gradient(135deg, #a78bfa, #6d28d9);
+    color: #fff;
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.35);
+}
+.dach-edit-columns__btn--back {
+    background: rgba(71, 85, 105, 0.9);
+    color: #f1f5f9;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}

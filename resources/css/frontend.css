@@ -1,0 +1,10 @@
+/**
+ * Hybrid Migration — frontend Vite bundle (master.blade.php)
+ * - Vite: main.css فقط (خفيف). skin_color يُحمّل لاحقاً كـ asset() بعد style ليطابق ترتيب القالب الأصلي.
+ * - asset(): vendors_css → style.css → skin_color.css (انظر master.blade.php).
+ */
+@import '../../public/frontend/css/main.css';
+
+:root {
+    --connect-pro-frontend-vite-entry: 1;
+}

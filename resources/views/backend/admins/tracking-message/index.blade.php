@@ -1,0 +1,9 @@
+@extends('backend.layouts.admin')
+@push('liveWire_styles')
+    @livewireStyles
+@endpush
+@section('content')
+    @livewire('admin.tracking-message.index')
+@endsection
+@push('livewire_scripts')
+@endpush

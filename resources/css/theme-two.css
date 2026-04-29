@@ -1,0 +1,9 @@
+/**
+ * Hybrid Migration — theme_two
+ * public/new_frontend_theme/css/bootstrap.css يحتوي نصاً HTML خاطئاً داخل القواعد (سطر ~5560) ولا يمرّ عبر PostCSS.
+ * لذلك تبقى كل أوراق theme_two الثقيلة كـ <link asset()> في links.blade.php.
+ * هذا المدخل محجوز لتجاوزات Vite-only (أنماط صغيرة) أو ترحيل لاحق بعد إصلاح الملفات المصدرة.
+ */
+:root {
+    --connect-pro-theme-two-vite-entry: 1;
+}

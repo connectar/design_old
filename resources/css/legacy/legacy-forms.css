@@ -1,0 +1,456 @@
+/**
+ * Split from dach-legacy-bridge.css — preserve cascade; do not reorder @import in dach-legacy.css.
+ * Form controls, input groups, nav-tabs, stat strip
+ * Original monolith lines 271–709 (inclusive).
+ */
+
+/* ——— حقول النماذج (تنسيق موحّد عبر المشروع — مطابق أسلوب البطاقات الزجاجية) ——— */
+.main {
+    --dach-input-radius: 14px;
+    --dach-input-pad-block: 12px;
+    --dach-input-pad-inline: 1.25rem;
+    --dach-input-border-width: 1px;
+    --dach-select-chevron-svg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+[data-theme='light'] .main {
+    --dach-select-chevron-svg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+.main .form-group {
+    margin-bottom: 1rem;
+}
+.main .form-group.row {
+    align-items: center;
+}
+.main .col-form-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    padding-top: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+.main .form-label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.45rem;
+    line-height: 1.35;
+}
+/* تسمية مع أيقونة (اختياري): label.form-label.dach-field-label + span + .dach-field-label__icon */
+.main .dach-field-label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.45rem;
+}
+[dir='rtl'] .main .dach-field-label {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+[dir='ltr'] .main .dach-field-label {
+    justify-content: flex-start;
+}
+.main .dach-field-label .dach-field-label__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    font-size: 1rem;
+    color: var(--accent-1);
+}
+.main .form-control,
+.main .form-select {
+    display: block;
+    width: 100%;
+    padding: var(--dach-input-pad-block) var(--dach-input-pad-inline);
+    font-size: 0.92rem;
+    font-family: inherit;
+    line-height: 1.45;
+    color: var(--text-primary);
+    text-align: start;
+    background-color: color-mix(in srgb, var(--input-bg) 92%, transparent);
+    border: var(--dach-input-border-width) solid var(--input-border);
+    border-radius: var(--dach-input-radius);
+    outline: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+.main .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: var(--dach-select-chevron-svg);
+    background-repeat: no-repeat;
+    background-size: 0.95rem;
+    background-position: right 0.85rem center;
+    padding-inline-end: 2.45rem;
+}
+[dir='rtl'] .main .form-select {
+    background-position: left 0.85rem center;
+}
+.main .form-select[multiple],
+.main .form-select[size]:not([size='1']) {
+    background-image: none;
+    padding-inline-end: var(--dach-input-pad-inline);
+    min-height: 6.5rem;
+}
+.main .form-control:focus,
+.main .form-select:focus {
+    border-color: color-mix(in srgb, var(--accent-1) 55%, var(--input-border));
+    box-shadow: 0 0 0 3px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.main .form-control:disabled,
+.main .form-select:disabled {
+    opacity: 0.68;
+    cursor: not-allowed;
+}
+/* خيارات أي select ضمن .main تتبع ألوان الثيم (مع color-scheme على html) */
+.main .form-select option {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+}
+.main .form-control::placeholder,
+.main textarea.form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+.main .form-control-sm,
+.main .form-select.form-control-sm {
+    --dach-input-radius: 12px;
+    --dach-input-pad-block: 0.45rem;
+    --dach-input-pad-inline: 0.75rem;
+    font-size: 0.82rem;
+}
+.main .form-control-sm.form-select,
+.main .form-select.form-control-sm {
+    background-size: 0.82rem;
+    background-position: right 0.65rem center;
+    padding-inline-end: 2rem;
+}
+[dir='rtl'] .main .form-control-sm.form-select,
+[dir='rtl'] .main .form-select.form-control-sm {
+    background-position: left 0.65rem center;
+}
+.main input.form-control[type='file'] {
+    padding: 0.55rem 0.85rem;
+    cursor: pointer;
+    box-shadow: none;
+}
+.main textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+/* حقل مع أيقونة داخل الصندوق (نهاية السطر في RTL = يسار): غلّف الحقل بـ .dach-input-has-icon */
+.main .dach-input-has-icon {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.main .dach-input-has-icon > .form-control,
+.main .dach-input-has-icon > .form-select {
+    padding-inline-end: 2.65rem;
+}
+[dir='rtl'] .main .dach-input-has-icon > .form-control,
+[dir='rtl'] .main .dach-input-has-icon > .form-select {
+    padding-inline-end: var(--dach-input-pad-inline);
+    padding-inline-start: 2.65rem;
+}
+[dir='rtl'] .main .dach-input-has-icon > .form-select {
+    padding-inline-start: 2.65rem;
+    padding-inline-end: 2.45rem;
+}
+.main .dach-input-has-icon .dach-input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    inset-inline-end: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1;
+    z-index: 1;
+}
+[dir='rtl'] .main .dach-input-has-icon .dach-input-icon {
+    inset-inline-end: auto;
+    inset-inline-start: 0.85rem;
+}
+[dir='rtl'] .main .dach-input-has-icon > .form-select {
+    padding-inline-start: 2.65rem;
+}
+.main .bg-lightest {
+    background: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ——— أزرار ——— */
+.main .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.88rem;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: none;
+    border-radius: 12px;
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+    color: #fff;
+}
+.main .btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    text-decoration: none;
+    color: #fff;
+}
+.main .btn-sm {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    border-radius: 10px;
+}
+.main .btn-md {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+}
+.main .btn-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+.main .btn-primary {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    box-shadow: 0 4px 14px var(--accent-glow);
+}
+.main .btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #1a0f00 !important;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+}
+.main .btn-warning:hover {
+    color: #1a0f00 !important;
+}
+.main .btn-danger {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+}
+.main .btn-info {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+.main .btn-default,
+.main .btn-secondary {
+    background: var(--card-bg);
+    color: var(--text-primary) !important;
+    border: 2px solid var(--card-border);
+    box-shadow: none;
+}
+.main .btn-default:hover,
+.main .btn-secondary:hover {
+    color: var(--text-primary) !important;
+    border-color: var(--accent-1);
+}
+.main .btn-dark {
+    background: linear-gradient(135deg, #334155, #1e293b);
+}
+.main .btn-light {
+    background: color-mix(in srgb, var(--text-primary) 12%, transparent);
+    color: var(--text-primary) !important;
+    border: 1px solid var(--card-border);
+}
+.main .btn-light:hover {
+    color: var(--text-primary) !important;
+}
+.main .btn-outline,
+.main .btn.btn-outline {
+    background: transparent !important;
+    border: 2px solid color-mix(in srgb, var(--accent-1) 65%, var(--card-border)) !important;
+    color: var(--accent-1) !important;
+    box-shadow: none !important;
+}
+.main .btn-outline:hover,
+.main .btn.btn-outline:hover {
+    background: color-mix(in srgb, var(--accent-1) 14%, transparent) !important;
+    color: var(--text-primary) !important;
+}
+.main .btn-outline.btn-primary,
+.main .btn.btn-outline.btn-primary {
+    border-color: color-mix(in srgb, var(--accent-1) 75%, transparent) !important;
+    color: var(--accent-1) !important;
+}
+
+/* ——— ألوان نصوص مساعدة ——— */
+.main .text-primary {
+    color: var(--accent-1) !important;
+}
+.main .text-info {
+    color: #0e7490 !important;
+}
+[data-theme="dark"] .main .text-info {
+    color: #67e8f9 !important;
+}
+.main .text-black {
+    color: var(--text-primary) !important;
+}
+
+/* ——— مجموعات الإدخال (أيقونة + حقل) — لا overflow:hidden حتى لا يُقصّ قائمة bootstrap-select ——— */
+.main .input-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 8px;
+    flex: 1 1 220px;
+    min-width: 0;
+}
+.main .input-group-addon,
+.main .input-group .input-group-addon,
+.main .input-group span.input-group-addon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--dach-input-radius, 14px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.main .input-group > .form-control,
+.main .input-group > .form-select,
+.main .input-group > select.form-select,
+.main .input-group > textarea.form-control {
+    flex: 1 1 160px;
+    min-width: 140px;
+}
+.main .input-group > .form-select,
+.main .input-group > select.form-select {
+    min-width: 140px;
+}
+.main .input-group .bootstrap-select {
+    flex: 1 1 160px;
+    min-width: 140px;
+    max-width: 100%;
+}
+.main .input-group .bootstrap-select > .dropdown-toggle {
+    width: 100%;
+}
+
+/* ——— تبويبات النماذج (تعديل مستخدم / إعدادات) ——— */
+.main .nav.nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 6px;
+    padding: 0.35rem 0 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--card-border);
+}
+.main .nav.nav-tabs .nav-item {
+    list-style: none;
+    margin-bottom: 0;
+    /* عزل تبويبات Bootstrap عن أي .nav-item عام (مثلاً بعد إصلاح نطاق الشريط الجانبي) */
+    display: block;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    font-weight: inherit;
+    font-size: inherit;
+    gap: unset;
+    cursor: default;
+}
+.main .nav.nav-tabs .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.55rem 0.95rem;
+    border-radius: 12px 12px 0 0;
+    font-weight: 800;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    border-bottom: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.main .nav.nav-tabs .nav-link:hover {
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--accent-1) 12%, transparent);
+}
+.main .nav.nav-tabs .nav-link.active {
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--accent-1) 22%, var(--card-bg));
+    border-color: var(--card-border);
+    border-bottom-color: transparent;
+}
+.main .nav.nav-tabs .nav-link span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.main .dropdown-menu .dach-tab-dropdown-item,
+.main .dropdown.setting_tab .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+.main .dropdown-menu .dach-tab-dropdown-item i {
+    width: 1.25rem;
+    text-align: center;
+    color: var(--accent-1);
+}
+
+/* ——— صفوف خيارات (واتساب / SMS) ——— */
+.main .notify_input_sec.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+.main .notify_input_sec.row > [class*="col-"] {
+    flex: 1 1 140px;
+    max-width: 100%;
+}
+.main .notify_input_sec label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+/* ——— شريط إحصائيات واضح تحت الفلاتر ——— */
+.main .dach-stat-strip-wrap {
+    margin-top: 0.75rem;
+}
+.main .dach-stat-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card-bg) 88%, var(--accent-1) 12%);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 4px 18px var(--shadow);
+}
+.main .dach-stat-strip .badge {
+    font-size: 0.86rem;
+    padding: 0.5em 0.95em;
+    font-weight: 800;
+}

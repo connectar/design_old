@@ -1,0 +1,308 @@
+﻿/**
+ * Split from dach-legacy-bridge.css — preserve cascade; do not reorder @import in dach-legacy.css.
+ * Base grid, utilities, AdminLTE .box
+ * Original monolith lines 1–270 (inclusive).
+ */
+
+/**
+ * DACH — جسر التصميم للواجهات التي تعتمد على فئات Bootstrap / AdminLTE
+ * (نطاق .main حتى لا تتأثر شريط DACH الجانبي)
+ */
+
+/* ——— شبكة مبسطة (بدون bootstrap.css) ——— */
+.main .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+.main .row.align-items-center {
+    align-items: center;
+}
+.main .row.justify-content-center {
+    justify-content: center;
+}
+.main [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.main .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.main .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+@media (min-width: 576px) {
+    .main .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .main .col-sm-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .main .col-md-2 {
+        flex: 0 0 16.666667%;
+        max-width: 16.666667%;
+    }
+    .main .col-md-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+    .main .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .main .col-md-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+    .main .col-md-10 {
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+    }
+}
+
+@media (min-width: 992px) {
+    .main .col-lg-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .main .col-lg-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main .col-xl-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+/* ——— Bootstrap display / flex (مطلوبة لأن bootstrap.css غير محمّل في DACH) ——— */
+.main .d-none {
+    display: none !important;
+}
+.main .d-block {
+    display: block !important;
+}
+.main .d-inline-block {
+    display: inline-block !important;
+}
+@media (min-width: 768px) {
+    .main .d-md-block {
+        display: block !important;
+    }
+    .main .d-md-none {
+        display: none !important;
+    }
+    .main .d-md-flex {
+        display: flex !important;
+    }
+}
+.main .container-fluid {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 4px;
+}
+.main .w-100 {
+    width: 100% !important;
+}
+.main .col {
+    flex: 1 0 0%;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.main .mt-2 {
+    margin-top: 0.5rem !important;
+}
+.main .mb-2 {
+    margin-bottom: 0.5rem !important;
+}
+
+.main .d-flex {
+    display: flex !important;
+}
+.main .flex-column {
+    flex-direction: column !important;
+}
+@media (min-width: 768px) {
+    .main .flex-md-row {
+        flex-direction: row !important;
+    }
+}
+.main .align-items-stretch {
+    align-items: stretch !important;
+}
+.main .align-items-center {
+    align-items: center !important;
+}
+.main .gap-2 {
+    gap: 0.5rem !important;
+}
+.main .justify-content-between {
+    justify-content: space-between;
+}
+.main .flex-shrink-0 {
+    flex-shrink: 0;
+}
+.main .text-center {
+    text-align: center;
+}
+.main .text-danger {
+    color: #f87171 !important;
+}
+.main .pull-right {
+    float: none;
+    margin-inline-start: auto;
+}
+.main .pull-left {
+    float: none;
+    margin-inline-end: auto;
+}
+.main .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.main .mx-2 {
+    margin-inline: 0.5rem;
+}
+.main .mx-3 {
+    margin-inline: 0.75rem;
+}
+.main .ml-5 {
+    margin-inline-start: 1.25rem;
+}
+.main .pe-2 {
+    padding-inline-end: 0.5rem !important;
+}
+.main .ps-5 {
+    padding-inline-start: 1.25rem !important;
+}
+.main .my-2 {
+    margin-block: 0.5rem;
+}
+.main .py-2 {
+    padding-block: 0.5rem;
+}
+.main .py-3 {
+    padding-block: 0.75rem;
+}
+.main .px-2 {
+    padding-inline: 0.5rem;
+}
+.main .px-4 {
+    padding-inline: 1rem;
+}
+.main .px-5 {
+    padding-inline: 1.25rem;
+}
+.main .p-2 {
+    padding: 0.5rem;
+}
+.main .pt-0 {
+    padding-top: 0;
+}
+.main .pt-2 {
+    padding-top: 0.5rem;
+}
+.main .mt-5 {
+    margin-top: 1.25rem;
+}
+.main .m-0 {
+    margin: 0;
+}
+.main .fw-bold {
+    font-weight: 700;
+}
+.main .h-p100 {
+    min-height: 140px;
+}
+
+/* ——— صندوق المحتوى (بديل AdminLTE .box) ——— */
+.main .box {
+    position: relative;
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 22px;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 10px 32px var(--shadow);
+    overflow: hidden;
+}
+/* جداول بفلاتر/قوائم منسدلة: لا تقص المحتوى (overflow:hidden على .box يخفي القوائم و«يفصل» شريط الفلاتر) */
+.main .box.dach-box--allow-overflow {
+    overflow: visible;
+}
+.main .box.dach-box--allow-overflow .box-body {
+    overflow: visible;
+}
+.main .box-body {
+    padding: 1rem 1.1rem;
+    color: var(--text-secondary);
+}
+.main .box-header {
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 92%, var(--accent-1) 8%);
+}
+.main .box-header.with-border {
+    border-bottom: 1px solid var(--card-border);
+}
+.main .box-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.main .box-footer {
+    padding: 0.85rem 1.1rem;
+    border-top: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 95%, transparent);
+}
+.main .box-footer.dach-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+}
+.main .box-footer.dach-form-actions .btn {
+    min-width: 7.5rem;
+}
+.main .dach-box-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.main .dach-box-header-row .box-title {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.main .border-success,
+.main .box.bt-3.border-success {
+    border-color: color-mix(in srgb, #10b981 45%, var(--card-border)) !important;
+}
+.main .box.bt-3 {
+    border-top-width: 3px;
+    border-top-style: solid;
+}
+

@@ -1,0 +1,777 @@
+/**
+ * DACH Design System v2 — مكوّنات صريحة + جسر AdminLTE/Bootstrap داخل `.main.dach-ds`
+ * يعتمد على متغيرات `dach-themes.css`. متجاوب: ديسكتوب / تابلت / موبايل.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* dach-card                                                                 */
+/* -------------------------------------------------------------------------- */
+.dach-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--dach-form-radius-lg, 12px);
+    padding: 12px 20px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 32px var(--shadow);
+    color: var(--text-primary);
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.dach-card--flush {
+    padding-inline: 0;
+}
+
+.dach-card--flush .dach-card__title,
+.dach-card--flush .dach-card__body {
+    padding-inline: 20px;
+}
+
+.dach-card:hover {
+    border-color: color-mix(in srgb, var(--accent-1) 35%, var(--card-border));
+}
+
+.dach-card__title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-primary);
+}
+
+.dach-card__body {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.dach-card__footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* -------------------------------------------------------------------------- */
+/* dach-form-group / dach-input                                               */
+/* -------------------------------------------------------------------------- */
+.dach-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.dach-form-group__label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.dach-input,
+.dach-form-group textarea.dach-input {
+    width: 100%;
+    display: block;
+    padding: 8px 14px;
+    min-height: 38px;
+    border-radius: var(--dach-form-radius-md, 8px);
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font: inherit;
+    line-height: 1.5;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.dach-input::placeholder,
+.dach-form-group textarea.dach-input::placeholder {
+    color: var(--input-placeholder, var(--text-muted));
+}
+
+.dach-input:focus,
+.dach-form-group textarea.dach-input:focus {
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 3px var(--focus-ring, var(--accent-glow));
+}
+
+.dach-input:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+select.dach-input {
+    cursor: pointer;
+    appearance: auto;
+}
+
+textarea.dach-input {
+    min-height: 96px;
+    padding: 10px 14px;
+    resize: vertical;
+}
+
+/* -------------------------------------------------------------------------- */
+/* dach-btn                                                                   */
+/* -------------------------------------------------------------------------- */
+.dach-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    min-height: 38px;
+    border-radius: var(--dach-form-radius-md, 8px);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.dach-btn:active {
+    transform: translateY(1px);
+}
+
+.dach-btn--primary {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: var(--text-on-accent);
+    box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.dach-btn--primary:hover {
+    box-shadow: 0 6px 20px var(--accent-glow);
+    filter: brightness(1.05);
+}
+
+.dach-btn--ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--card-border);
+}
+
+.dach-btn--ghost:hover {
+    border-color: color-mix(in srgb, var(--accent-1) 50%, var(--card-border));
+    background: color-mix(in srgb, var(--accent-1) 8%, transparent);
+}
+
+.dach-btn--secondary {
+    background: color-mix(in srgb, var(--card-bg) 70%, var(--text-muted));
+    color: var(--text-primary);
+    border-color: var(--card-border);
+}
+
+.dach-btn--danger {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: #fff;
+}
+
+.dach-btn--success {
+    background: linear-gradient(135deg, #10b981, #047857);
+    color: #fff;
+}
+
+.dach-btn--warning {
+    background: linear-gradient(135deg, #f59e0b, #b45309);
+    color: #1c1917;
+}
+
+.dach-btn--info {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+    color: #fff;
+}
+
+.dach-btn--block {
+    width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/* dach-table                                                                 */
+/* -------------------------------------------------------------------------- */
+.dach-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--dach-form-radius-md, 8px);
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    -webkit-overflow-scrolling: touch;
+}
+
+table.dach-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.dach-table thead th {
+    text-align: right;
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    vertical-align: middle;
+    background: var(--table-header-bg);
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--accent-1);
+    white-space: nowrap;
+}
+
+.dach-table tbody td {
+    padding: 10px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-secondary);
+}
+
+.dach-table tbody tr:hover td {
+    background: var(--table-row-hover);
+}
+
+.dach-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.dach-table--compact thead th,
+.dach-table--compact tbody td {
+    padding: 6px 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* dach-tab                                                                   */
+/* -------------------------------------------------------------------------- */
+.dach-tablist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.dach-tab {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.dach-tab:hover {
+    border-color: var(--accent-1);
+    color: var(--text-primary);
+}
+
+.dach-tab[aria-selected='true'],
+.dach-tab.is-active {
+    border-color: var(--accent-1);
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--accent-1) 14%, var(--card-bg));
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-1) 25%, transparent);
+}
+
+.dach-tabpanel {
+    color: var(--text-secondary);
+}
+
+.dach-tabpanel[hidden] {
+    display: none;
+}
+
+.dach-card a,
+.dach-tabpanel a {
+    color: var(--link-color, var(--accent-1));
+}
+
+.dach-card a:hover,
+.dach-tabpanel a:hover {
+    color: var(--link-hover, var(--accent-2));
+}
+
+/* -------------------------------------------------------------------------- */
+/* dach-index-menu — شريط أدوات الفهرس (مثل القديم، مرتب على كل الأجهزة)      */
+/* -------------------------------------------------------------------------- */
+.dach-index-menu {
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.dach-index-menu .box {
+    margin-bottom: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--dach-form-radius-lg, 12px);
+    box-shadow: 0 6px 24px var(--shadow);
+    overflow: hidden;
+}
+
+.dach-index-menu .box-header,
+.dach-index-menu .with-border {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 88%, var(--accent-1) 6%);
+}
+
+.dach-index-menu .box-body,
+.dach-index-menu .box-body.p-0 {
+    padding: 12px 14px !important;
+}
+
+.dach-index-menu .row {
+    margin-inline: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.dach-index-menu .row > [class*='col-'] {
+    padding-inline: 6px;
+    flex: 1 1 160px;
+    min-width: 0;
+}
+
+.dach-index-menu .btn,
+.dach-index-menu .btn-group .btn {
+    min-height: 38px;
+    font-weight: 700;
+    border-radius: var(--dach-form-radius-md, 8px);
+}
+
+.dach-index-menu .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dach-index-menu .form-control,
+.dach-index-menu .form-select {
+    min-height: 38px;
+    border-radius: var(--dach-form-radius-md, 8px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* صفحة legacy موحّدة                                                         */
+/* -------------------------------------------------------------------------- */
+.dach-ds-legacy-page {
+    border-radius: var(--dach-form-radius-lg, 12px);
+    overflow: hidden;
+}
+
+.dach-ds-form-stack .box {
+    border-radius: 0 0 var(--dach-form-radius-lg, 12px) var(--dach-form-radius-lg, 12px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* جسر AdminLTE داخل المحتوى — نفس إيقاع النظام القديم بألوان الثيم          */
+/* -------------------------------------------------------------------------- */
+.main.dach-ds .box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--dach-form-radius-lg, 12px);
+    box-shadow: 0 8px 28px var(--shadow);
+    margin-bottom: 1.25rem;
+    color: var(--text-secondary);
+    overflow: hidden;
+}
+
+.main.dach-ds .box.box-solid,
+.main.dach-ds .box.bt-1 {
+    border-color: var(--card-border);
+}
+
+.main.dach-ds .dach-index-menu .box {
+    margin-bottom: 0;
+    box-shadow: 0 6px 24px var(--shadow);
+}
+
+.main.dach-ds .box-header,
+.main.dach-ds .with-border {
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--card-bg) 90%, var(--accent-1) 8%);
+    border-bottom: 1px solid var(--card-border);
+    padding: 12px 16px;
+}
+
+.main.dach-ds .box-title {
+    color: var(--text-primary);
+    font-weight: 800;
+}
+
+.main.dach-ds .box-body {
+    padding: 16px 18px;
+    color: var(--text-secondary);
+}
+
+.main.dach-ds .box-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 94%, transparent);
+}
+
+.main.dach-ds .form-group {
+    margin-bottom: 1rem;
+}
+
+.main.dach-ds .form-group.row {
+    align-items: flex-start;
+}
+
+.main.dach-ds .form-label,
+.main.dach-ds label.control-label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+}
+
+.main.dach-ds .input-group {
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.main.dach-ds .input-group-addon,
+.main.dach-ds .input-group-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    padding: 0 10px;
+    background: color-mix(in srgb, var(--input-bg) 82%, var(--accent-1) 10%);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
+    border-radius: var(--dach-form-radius-md, 8px) 0 0 var(--dach-form-radius-md, 8px);
+}
+
+[dir='rtl'] .main.dach-ds .input-group-addon,
+[dir='rtl'] .main.dach-ds .input-group-text {
+    border-radius: 0 var(--dach-form-radius-md, 8px) var(--dach-form-radius-md, 8px) 0;
+}
+
+.main.dach-ds .input-group .form-control,
+.main.dach-ds .input-group .form-select {
+    min-height: 40px;
+    border-radius: 0 var(--dach-form-radius-md, 8px) var(--dach-form-radius-md, 8px) 0;
+}
+
+[dir='rtl'] .main.dach-ds .input-group .form-control,
+[dir='rtl'] .main.dach-ds .input-group .form-select {
+    border-radius: var(--dach-form-radius-md, 8px) 0 0 var(--dach-form-radius-md, 8px);
+}
+
+.main.dach-ds .btn {
+    font-weight: 700;
+    min-height: 38px;
+    padding: 8px 14px;
+    border-radius: var(--dach-form-radius-md, 8px);
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.12s ease,
+        filter 0.15s ease;
+}
+
+.main.dach-ds .btn-primary {
+    border: none;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: var(--text-on-accent);
+    box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.main.dach-ds .btn-primary:hover {
+    filter: brightness(1.06);
+    box-shadow: 0 6px 18px var(--accent-glow);
+}
+
+.main.dach-ds .btn-default,
+.main.dach-ds .btn-secondary {
+    background: color-mix(in srgb, var(--card-bg) 88%, var(--text-muted));
+    color: var(--text-primary);
+    border: 1px solid var(--card-border);
+}
+
+.main.dach-ds .btn-success {
+    color: #fff;
+}
+
+.main.dach-ds .btn-danger {
+    color: #fff;
+}
+
+.main.dach-ds .btn-warning {
+    color: #1c1917;
+}
+
+.main.dach-ds .nav-tabs {
+    flex-wrap: wrap;
+    gap: 4px;
+    border-bottom: 1px solid var(--card-border);
+    padding: 6px 8px 0;
+    background: color-mix(in srgb, var(--card-bg) 75%, transparent);
+}
+
+.main.dach-ds .nav-tabs .nav-link {
+    border-radius: var(--dach-form-radius-md, 8px) var(--dach-form-radius-md, 8px) 0 0;
+    font-weight: 700;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    margin-bottom: -1px;
+    padding: 10px 14px;
+}
+
+.main.dach-ds .nav-tabs .nav-link:hover {
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--accent-1) 10%, transparent);
+}
+
+.main.dach-ds .nav-tabs .nav-link.active {
+    color: var(--text-primary);
+    background: var(--card-bg);
+    border-color: var(--card-border) var(--card-border) transparent;
+    border-bottom-color: transparent;
+}
+
+.main.dach-ds .table-responsive {
+    border-radius: var(--dach-form-radius-md, 8px);
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+}
+
+.main.dach-ds .form-group.dach-form-group,
+.main.dach-ds .dach-form-group {
+    max-width: 100%;
+}
+
+.main.dach-ds .form-group.dach-form-group .control-label,
+.main.dach-ds .dach-form-group__label {
+    color: var(--text-secondary);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tablet (768–1199)                                                          */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 1199.98px) {
+    .dach-card {
+        padding: 12px 18px 18px;
+    }
+
+    .dach-index-menu .row > [class*='col-'] {
+        flex: 1 1 140px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .dach-card {
+        padding: 12px 16px 16px;
+    }
+
+    .dach-tablist {
+        gap: 6px;
+    }
+
+    .main.dach-ds .box-body {
+        padding: 14px 14px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mobile ≤767                                                               */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+    .dach-card {
+        padding: 10px 12px 14px;
+        margin-bottom: 14px;
+        border-radius: 14px;
+    }
+
+    .dach-card__title {
+        font-size: 0.98rem;
+    }
+
+    .dach-form-group {
+        margin-bottom: 12px;
+    }
+
+    .dach-input,
+    .dach-btn {
+        min-height: 44px;
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+
+    .dach-table-wrap {
+        margin-inline: -4px;
+        border-radius: 10px;
+    }
+
+    table.dach-table {
+        font-size: 0.8rem;
+    }
+
+    .dach-table thead th,
+    .dach-table tbody td {
+        padding: 6px 8px;
+    }
+
+    .dach-tablist {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        gap: 6px;
+        scrollbar-width: thin;
+    }
+
+    .dach-tab {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .dach-index-menu .row > [class*='col-'] {
+        flex: 1 1 100%;
+        width: 100% !important;
+        max-width: 100%;
+        margin-bottom: 6px;
+    }
+
+    .dach-index-menu .row > [class*='col-']:last-child {
+        margin-bottom: 0;
+    }
+
+    .dach-index-menu .btn-group {
+        width: 100%;
+    }
+
+    .dach-index-menu .btn-group .btn {
+        flex: 1 1 auto;
+    }
+
+    .dach-card__footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dach-card__footer .dach-btn {
+        width: 100%;
+    }
+
+    .main.dach-ds .form-group.row > .form-label + div,
+    .main.dach-ds .form-group.row > label + div {
+        width: 100%;
+    }
+
+    .main.dach-ds .input-group {
+        flex-wrap: nowrap;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .main.dach-ds .input-group .bootstrap-select {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .main.dach-ds .nav-tabs .nav-link {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* صغير جداً ≤400 — أزرار الفهرس عمودية                                      */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 400px) {
+    .dach-index-menu .btn {
+        width: 100%;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* تبويبات صفحة تعديل العميل — ربط Bootstrap nav-tabs بمظهر dach-tab          */
+/* -------------------------------------------------------------------------- */
+.main.dach-ds .dach-tablist--bootstrap.nav-tabs {
+    gap: 6px;
+}
+
+.main.dach-ds .dach-tablist--bootstrap.nav-tabs .nav-link.active {
+    border-color: var(--card-border) var(--card-border) transparent;
+    color: var(--text-primary);
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--accent-1) 12%, var(--card-bg)),
+        var(--card-bg)
+    );
+    box-shadow: inset 0 -2px 0 var(--accent-1);
+}
+
+/* صندوق الفورم الداخلي في تعديل العميل */
+.main.dach-ds .dach-card--nested.box {
+    margin-bottom: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.main.dach-ds .dach-ds-user-edit .dach-ue-section {
+    margin-bottom: 1rem;
+}
+
+/* أزرار حفظ/إلغاء في تذييل الصندوق */
+.main.dach-ds .dach-form-actions .btn {
+    min-height: 40px;
+    font-weight: 800;
+    border-radius: var(--dach-form-radius-md, 8px);
+    padding-inline: 1.1rem;
+}
+
+.main.dach-ds .dach-form-actions .btn.btn-success {
+    border: none;
+    background: linear-gradient(135deg, #10b981, #047857);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+.main.dach-ds .dach-form-actions .btn.btn-danger {
+    border: 1px solid color-mix(in srgb, #ef4444 45%, var(--card-border));
+    background: color-mix(in srgb, #ef4444 18%, var(--card-bg));
+    color: #fecaca;
+}
+
+html[data-theme='light'] .main.dach-ds .dach-form-actions .btn.btn-danger {
+    color: #b91c1c;
+}
+
+/* جداول datatable: دمج Bootstrap table مع dach-table */
+.main.dach-ds table.table.dach-table {
+    margin-bottom: 0;
+}
+
+.main.dach-ds table.table.dach-table thead th {
+    border-bottom: 2px solid var(--accent-1);
+    color: var(--text-primary);
+    font-weight: 800;
+}
+
+.main.dach-ds table.table.dach-table tbody td {
+    color: var(--text-secondary);
+    vertical-align: middle;
+}

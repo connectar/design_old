@@ -1,0 +1,343 @@
+/**
+ * صفحة تعديل بيانات العميل — تصميم حديث (gradients بنفسجي–أزرق، RTL، متغيرات DACH)
+ * النطاق: `.main .dach-user-edit-modern` فقط حتى لا يؤثر على بقية اللوحة.
+ */
+
+.main .dach-user-edit-modern {
+    --ue-radius: var(--dach-form-radius-lg, 16px);
+    --ue-radius-sm: var(--dach-form-radius-md, 12px);
+    --ue-card-pad: 1.25rem 1.35rem;
+    --ue-input-pad-y: 0.65rem;
+    --ue-input-pad-x: 1rem;
+    --ue-surface: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--accent-1) 14%, var(--card-bg)),
+        color-mix(in srgb, var(--accent-2) 12%, var(--card-bg))
+    );
+    --ue-surface-soft: color-mix(in srgb, var(--card-bg) 92%, transparent);
+    --ue-border-glow: color-mix(in srgb, var(--accent-1) 28%, var(--card-border));
+    --ue-focus: color-mix(in srgb, var(--accent-1) 45%, transparent);
+}
+
+/* ——— صندوق الصفحة ——— */
+.main .dach-user-edit-modern.box {
+    border-radius: var(--ue-radius);
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    background: var(--ue-surface-soft);
+    box-shadow: 0 12px 40px var(--shadow);
+}
+
+.main .dach-user-edit-modern .box-header {
+    padding-block: 1rem;
+    padding-inline: 1.25rem;
+    border-bottom: 1px solid var(--card-border);
+    background: var(--ue-surface);
+    backdrop-filter: blur(var(--dach-form-blur, 12px));
+    -webkit-backdrop-filter: blur(var(--dach-form-blur, 12px));
+}
+
+.main .dach-user-edit-modern .dach-ue-header-name {
+    color: color-mix(in srgb, var(--accent-1) 55%, var(--text-primary));
+    font-weight: 800;
+    margin-inline-start: 0.35rem;
+}
+
+.main .dach-user-edit-modern .dach-ue-status {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.main .dach-user-edit-modern .dach-ue-status .badge {
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    font-weight: 700;
+    font-size: 0.82rem;
+    border: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
+}
+
+.main .dach-user-edit-modern .dach-ue-status .badge.dach-ue-status--offline {
+    background: color-mix(in srgb, #ef4444 18%, var(--card-bg));
+    color: #fecaca;
+}
+
+.main .dach-user-edit-modern .dach-ue-status .badge.dach-ue-status--online {
+    background: color-mix(in srgb, #22c55e 28%, var(--card-bg));
+    color: #ecfccb;
+}
+
+.main .dach-user-edit-modern .dach-ue-status .badge.dach-ue-status--uptime {
+    background: color-mix(in srgb, var(--accent-2) 22%, var(--card-bg));
+    color: var(--text-primary);
+}
+
+/* ——— تبويبات ——— */
+.main .dach-user-edit-modern .nav.nav-tabs {
+    padding-inline: 0.5rem;
+    padding-block-start: 0.35rem;
+    gap: 0.35rem;
+    border-bottom: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 70%, transparent);
+}
+
+.main .dach-user-edit-modern .nav.nav-tabs .nav-link {
+    border-radius: var(--ue-radius-sm) var(--ue-radius-sm) 0 0;
+    font-weight: 700;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    margin-bottom: -1px;
+}
+
+.main .dach-user-edit-modern .nav.nav-tabs .nav-link:hover {
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--accent-1) 10%, transparent);
+}
+
+.main .dach-user-edit-modern .nav.nav-tabs .nav-link.active {
+    color: var(--text-primary);
+    background: var(--ue-surface);
+    border-color: var(--card-border);
+    border-bottom-color: transparent;
+    box-shadow: 0 -2px 16px color-mix(in srgb, var(--accent-1) 15%, transparent);
+}
+
+.main .dach-user-edit-modern .dach-user-edit-modern__tab-content {
+    padding: 1.25rem;
+    background: color-mix(in srgb, var(--card-bg) 55%, transparent);
+}
+
+/* ——— بطاقات النموذج ——— */
+.main .dach-user-edit-modern .dach-ue-section {
+    margin-bottom: 1.25rem;
+    border-radius: var(--ue-radius);
+    border: 1px solid var(--card-border);
+    background: var(--ue-surface);
+    box-shadow: 0 4px 24px color-mix(in srgb, var(--shadow) 55%, transparent);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.main .dach-user-edit-modern .dach-ue-section__head {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--accent-1) 10%, transparent);
+}
+
+.main .dach-user-edit-modern .dach-ue-section__head i {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-on-accent-soft);
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.main .dach-user-edit-modern .dach-ue-section__title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+}
+
+.main .dach-user-edit-modern .dach-ue-section__body {
+    padding: var(--ue-card-pad);
+}
+
+.main .dach-user-edit-modern .dach-ue-section__body > .row {
+    row-gap: 1rem;
+    margin-inline: -0.35rem;
+}
+
+.main .dach-user-edit-modern .dach-ue-section__body > .row > [class*="col-"] {
+    padding-inline: 0.35rem;
+}
+
+/* ——— حقول ——— */
+.main .dach-user-edit-modern .dach-ue-section .form-group.row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    margin-bottom: 0;
+}
+
+.main .dach-user-edit-modern .dach-ue-section .form-label {
+    margin: 0;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-align: start;
+}
+
+.main .dach-user-edit-modern .dach-ue-section .input-group {
+    border-radius: var(--ue-radius-sm);
+    border: 1px solid var(--input-border);
+    background: color-mix(in srgb, var(--input-bg) 88%, transparent);
+    overflow: hidden;
+    flex-wrap: nowrap;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main .dach-user-edit-modern .dach-ue-section .input-group:focus-within {
+    border-color: var(--ue-border-glow);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-1) 22%, transparent);
+}
+
+.main .dach-user-edit-modern .dach-ue-section .input-group-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3rem;
+    padding-inline: 0.85rem;
+    background: color-mix(in srgb, var(--accent-1) 12%, transparent);
+    border: none;
+    border-inline-end: 1px solid var(--input-border);
+    color: color-mix(in srgb, var(--accent-1) 70%, var(--text-primary));
+}
+
+.main .dach-user-edit-modern .dach-ue-section .input-group .form-control,
+.main .dach-user-edit-modern .dach-ue-section .input-group .form-select,
+.main .dach-user-edit-modern .dach-ue-section .input-group select.selectpicker {
+    padding-block: var(--ue-input-pad-y);
+    padding-inline: var(--ue-input-pad-x);
+    min-height: 2.65rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    box-shadow: none;
+}
+
+.main .dach-user-edit-modern .dach-ue-section textarea.form-control {
+    min-height: 6.5rem;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+.main .dach-user-edit-modern .dach-ue-section .bootstrap-select > .dropdown-toggle {
+    min-height: 2.65rem;
+    padding-block: var(--ue-input-pad-y) !important;
+    padding-inline: var(--ue-input-pad-x) !important;
+}
+
+/* ——— Toggle SMS ——— */
+.main .dach-user-edit-modern .dach-ue-section label.switch {
+    margin: 0;
+}
+
+.main .dach-user-edit-modern .dach-ue-section label.switch .switch-indicator {
+    border: 1px solid var(--input-border);
+    background: color-mix(in srgb, var(--text-muted) 35%, var(--card-bg));
+}
+
+.main .dach-user-edit-modern .dach-ue-section label.switch.switch-success input:checked + .switch-indicator {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-color: color-mix(in srgb, #22c55e 50%, transparent);
+}
+
+/* ——— إشعارات ——— */
+.main .dach-user-edit-modern .dach-ue-notify {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.main .dach-user-edit-modern .dach-ue-notify__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--ue-radius-sm);
+    border: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 80%, transparent);
+    font-weight: 600;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.main .dach-user-edit-modern .dach-ue-notify__item:hover {
+    border-color: var(--ue-border-glow);
+    background: color-mix(in srgb, var(--accent-1) 10%, var(--card-bg));
+}
+
+.main .dach-user-edit-modern .dach-ue-notify__item input {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--accent-1);
+    margin: 0;
+}
+
+/* intl-tel-input */
+.main .dach-user-edit-modern .dach-ue-section .iti {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* ——— أزرار التذييل داخل التبويب ——— */
+.main .dach-user-edit-modern .box-footer.dach-form-actions {
+    padding: 1rem 1.25rem;
+    gap: 0.65rem;
+    border-top: 1px solid var(--card-border);
+    background: color-mix(in srgb, var(--card-bg) 65%, transparent);
+}
+
+.main .dach-user-edit-modern .box-footer.dach-form-actions .btn-success {
+    font-weight: 700;
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--ue-radius-sm);
+    border: none;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 6px 18px color-mix(in srgb, #22c55e 35%, transparent);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.main .dach-user-edit-modern .box-footer.dach-form-actions .btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px color-mix(in srgb, #22c55e 45%, transparent);
+    color: #fff;
+}
+
+.main .dach-user-edit-modern .box-footer.dach-form-actions .btn-danger {
+    font-weight: 700;
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--ue-radius-sm);
+    border: none;
+    background: linear-gradient(135deg, #f87171, #ef4444);
+    box-shadow: 0 6px 18px color-mix(in srgb, #ef4444 28%, transparent);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.main .dach-user-edit-modern .box-footer.dach-form-actions .btn-danger:hover {
+    transform: translateY(-1px);
+    color: #fff;
+}
+
+@media (max-width: 767.98px) {
+    .main .dach-user-edit-modern .dach-user-edit-modern__tab-content {
+        padding: 0.85rem;
+    }
+}
+
+/* صندوق النموذج الداخلي داخل التبويب — بدون إطار مزدوج */
+.main .dach-user-edit-modern .dach-user-edit-modern__tab-content > .tab-pane > form > .box {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+}

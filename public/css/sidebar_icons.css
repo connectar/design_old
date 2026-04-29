@@ -1,0 +1,267 @@
+/* =========================================================
+   Sidebar Icons – Unified color palette & polish
+   Applied globally to every admin / manager / cafe panel.
+   Uses !important because the base theme
+   (color_theme.css / .theme-primary.*-skin) has higher
+   specificity on parent icons.
+   ========================================================= */
+
+/* ----- Base sizing & smooth color transition ----- */
+.sidebar-menu > li > a > .fa,
+.sidebar-menu > li > a > .icon-tools,
+.sidebar-menu > li > a > .ti,
+.sidebar-menu > li > a > i {
+    width: 22px;
+    font-size: 18px;
+    text-align: center;
+    transition: color .2s ease, transform .2s ease;
+}
+
+.sidebar-menu > li > a:hover > .fa,
+.sidebar-menu > li > a:hover > .ti,
+.sidebar-menu > li > a:hover > i {
+    transform: scale(1.12);
+}
+
+/* =========================================================
+   Parent-level icon colors (by Font Awesome class)
+   ========================================================= */
+.sidebar-menu > li > a > .fa-desktop,
+.sidebar-menu > li > a > .fa-tachometer,
+.sidebar-menu > li > a > .fa-dashboard          { color: #3ba7ff !important; }   /* home / dashboard */
+
+.sidebar-menu > li > a > .fa-suitcase,
+.sidebar-menu > li > a > .fa-briefcase,
+.sidebar-menu > li > a > .fa-shopping-bag       { color: #f59e0b !important; }   /* account / wallet */
+
+.sidebar-menu > li > a > .fa-podcast,
+.sidebar-menu > li > a > .fa-broadcast-tower,
+.sidebar-menu > li > a > .fa-satellite-dish,
+.sidebar-menu > li > a > .fa-wifi               { color: #a855f7 !important; }   /* devices / signal */
+
+.sidebar-menu > li > a > .fa-map,
+.sidebar-menu > li > a > .fa-map-marker,
+.sidebar-menu > li > a > .fa-globe              { color: #10b981 !important; }   /* map */
+
+.sidebar-menu > li > a > .fa-envelope,
+.sidebar-menu > li > a > .fa-envelope-o,
+.sidebar-menu > li > a > .fa-inbox              { color: #06b6d4 !important; }   /* messages */
+
+.sidebar-menu > li > a > .fa-bar-chart,
+.sidebar-menu > li > a > .fa-line-chart,
+.sidebar-menu > li > a > .fa-area-chart,
+.sidebar-menu > li > a > .fa-pie-chart          { color: #6366f1 !important; }   /* statistics */
+
+.sidebar-menu > li > a > .fa-bank,
+.sidebar-menu > li > a > .fa-university,
+.sidebar-menu > li > a > .fa-dollar,
+.sidebar-menu > li > a > .fa-usd                { color: #eab308 !important; }   /* financial */
+
+.sidebar-menu > li > a > .fa-group,
+.sidebar-menu > li > a > .fa-users,
+.sidebar-menu > li > a > .fa-user-secret,
+.sidebar-menu > li > a > .fa-user-shield        { color: #ef4444 !important; }   /* admins / managers */
+
+.sidebar-menu > li > a > .fa-server,
+.sidebar-menu > li > a > .fa-hdd-o,
+.sidebar-menu > li > a > .fa-database           { color: #8b5cf6 !important; }   /* servers */
+
+.sidebar-menu > li > a > .fa-handshake-o,
+.sidebar-menu > li > a > .fa-handshake,
+.sidebar-menu > li > a > .fa-tags,
+.sidebar-menu > li > a > .fa-tag                { color: #f97316 !important; }   /* offers */
+
+.sidebar-menu > li > a > .fa-user-circle,
+.sidebar-menu > li > a > .fa-user-circle-o,
+.sidebar-menu > li > a > .fa-user,
+.sidebar-menu > li > a > .fa-user-o             { color: #14b8a6 !important; }   /* customers / users */
+
+.sidebar-menu > li > a > .fa-file-text,
+.sidebar-menu > li > a > .fa-file-text-o,
+.sidebar-menu > li > a > .fa-file-invoice,
+.sidebar-menu > li > a > .fa-file               { color: #ec4899 !important; }   /* invoices */
+
+.sidebar-menu > li > a > .fa-history,
+.sidebar-menu > li > a > .fa-clock-o,
+.sidebar-menu > li > a > .fa-hourglass          { color: #94a3b8 !important; }   /* logs / history */
+
+.sidebar-menu > li > a > .fa-id-card,
+.sidebar-menu > li > a > .fa-id-card-o,
+.sidebar-menu > li > a > .fa-address-card       { color: #22c55e !important; }   /* cards */
+
+.sidebar-menu > li > a > .fa-money,
+.sidebar-menu > li > a > .fa-money-bill,
+.sidebar-menu > li > a > .fa-credit-card        { color: #facc15 !important; }   /* money / charging */
+
+.sidebar-menu > li > a > .fa-address-book,
+.sidebar-menu > li > a > .fa-address-book-o,
+.sidebar-menu > li > a > .fa-book               { color: #0ea5e9 !important; }   /* distributors */
+
+.sidebar-menu > li > a > .fa-ticket,
+.sidebar-menu > li > a > .fa-life-ring          { color: #f43f5e !important; }   /* tickets */
+
+.sidebar-menu > li > a > .fa-comments,
+.sidebar-menu > li > a > .fa-comments-o,
+.sidebar-menu > li > a > .fa-comment,
+.sidebar-menu > li > a > .fa-comment-o          { color: #25d366 !important; }   /* chat */
+
+.sidebar-menu > li > a > .fa-cog,
+.sidebar-menu > li > a > .fa-cogs,
+.sidebar-menu > li > a > .fa-gears,
+.sidebar-menu > li > a > .fa-sliders            { color: #cbd5e1 !important; }   /* settings */
+
+.sidebar-menu > li > a > .fa-bell,
+.sidebar-menu > li > a > .fa-bell-o             { color: #f59e0b !important; }   /* notifications */
+
+.sidebar-menu > li > a > .fa-shield,
+.sidebar-menu > li > a > .fa-lock,
+.sidebar-menu > li > a > .fa-ban                { color: #dc2626 !important; }   /* security / blocks */
+
+.sidebar-menu > li > a > .fa-download,
+.sidebar-menu > li > a > .fa-upload,
+.sidebar-menu > li > a > .fa-cloud-download,
+.sidebar-menu > li > a > .fa-cloud-upload       { color: #0891b2 !important; }   /* import/export */
+
+.sidebar-menu > li > a > .fa-paint-brush,
+.sidebar-menu > li > a > .fa-palette,
+.sidebar-menu > li > a > .fa-image              { color: #d946ef !important; }   /* designs / media */
+
+.sidebar-menu > li > a > .fa-coffee             { color: #b45309 !important; }   /* cafe */
+
+.sidebar-menu > li > a > .fa-thumb-tack,
+.sidebar-menu > li > a > .fa-map-pin            { color: #f97316 !important; }   /* tasks */
+
+.sidebar-menu > li > a > .fa-question,
+.sidebar-menu > li > a > .fa-question-circle,
+.sidebar-menu > li > a > .fa-question-circle-o  { color: #0ea5e9 !important; }   /* questions */
+
+.sidebar-menu > li > a > .fa-wrench,
+.sidebar-menu > li > a > .fa-tools              { color: #f59e0b !important; }   /* install settings */
+
+.sidebar-menu > li > a > .fa-tasks,
+.sidebar-menu > li > a > .fa-clipboard-list     { color: #6366f1 !important; }   /* networks */
+
+.sidebar-menu > li > a > .fa-paypal             { color: #0070ba !important; }   /* paypal */
+
+.sidebar-menu > li > a > .fa-newspaper-o,
+.sidebar-menu > li > a > .fa-newspaper          { color: #ec4899 !important; }   /* posts */
+
+.sidebar-menu > li > a > .fa-glass              { color: #f97316 !important; }   /* drinks */
+
+/* Small "new" badge next to a menu item */
+.sidebar-menu > li > a > .badge-light .ti-star,
+.sidebar-menu > li > a > .badge-light .fa-star  { color: #f59e0b !important; }
+
+/* =========================================================
+   Child (treeview) items
+   Replace the blurry `icon-Commit` bullet with a crisp
+   colored chevron/dot that matches the parent section.
+   ========================================================= */
+.treeview-menu > li > a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hide legacy decorative spans inside icon-Commit (we replace with :before) */
+.treeview-menu > li > a > .icon-Commit {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    line-height: 1;
+}
+.treeview-menu > li > a > .icon-Commit > .path1,
+.treeview-menu > li > a > .icon-Commit > .path2 { display: none; }
+
+.treeview-menu > li > a > .icon-Commit::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    inset-inline-start: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background: currentColor;
+    opacity: .55;
+    transition: opacity .2s ease, transform .2s ease;
+}
+.treeview-menu > li > a:hover > .icon-Commit::before,
+.treeview-menu > li.active > a > .icon-Commit::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.25);
+}
+
+/* Colored child Font Awesome icons: slightly softer + small */
+.treeview-menu > li > a > .fa {
+    width: 18px;
+    font-size: 13px;
+    text-align: center;
+    opacity: .9;
+}
+.treeview-menu > li > a > .fa.fa-plus,
+.treeview-menu > li > a > .fa.fa-plus-circle     { color: #22c55e !important; }  /* create */
+.treeview-menu > li > a > .fa.fa-list,
+.treeview-menu > li > a > .fa.fa-th-list,
+.treeview-menu > li > a > .fa.fa-bars            { color: #3ba7ff !important; }  /* list / all */
+.treeview-menu > li > a > .fa.fa-trash,
+.treeview-menu > li > a > .fa.fa-trash-o,
+.treeview-menu > li > a > .fa.fa-recycle         { color: #ef4444 !important; }  /* trashed */
+.treeview-menu > li > a > .fa.fa-upload,
+.treeview-menu > li > a > .fa.fa-file-excel-o,
+.treeview-menu > li > a > .fa.fa-file-import     { color: #0891b2 !important; }  /* import / upload */
+.treeview-menu > li > a > .fa.fa-paint-brush,
+.treeview-menu > li > a > .fa.fa-palette         { color: #d946ef !important; }  /* designs */
+.treeview-menu > li > a > .fa.fa-wifi,
+.treeview-menu > li > a > .fa.fa-signal          { color: #10b981 !important; }  /* online */
+.treeview-menu > li > a > .fa.fa-tachometer,
+.treeview-menu > li > a > .fa.fa-gauge           { color: #6366f1 !important; }  /* quota */
+.treeview-menu > li > a > .fa.fa-whatsapp        { color: #25d366 !important; }
+.treeview-menu > li > a > .fa.fa-paper-plane,
+.treeview-menu > li > a > .fa.fa-paper-plane-o,
+.treeview-menu > li > a > .fa.fa-telegram        { color: #0ea5e9 !important; }
+.treeview-menu > li > a > .fa.fa-exclamation-triangle,
+.treeview-menu > li > a > .fa.fa-exclamation-circle { color: #f59e0b !important; } /* debts */
+.treeview-menu > li > a > .fa.fa-money,
+.treeview-menu > li > a > .fa.fa-dollar          { color: #facc15 !important; }
+.treeview-menu > li > a > .fa.fa-file,
+.treeview-menu > li > a > .fa.fa-file-text,
+.treeview-menu > li > a > .fa.fa-file-text-o,
+.treeview-menu > li > a > .fa.fa-receipt         { color: #ec4899 !important; }
+.treeview-menu > li > a > .fa.fa-users,
+.treeview-menu > li > a > .fa.fa-user,
+.treeview-menu > li > a > .fa.fa-user-plus       { color: #14b8a6 !important; }
+.treeview-menu > li > a > .fa.fa-server,
+.treeview-menu > li > a > .fa.fa-hdd-o           { color: #8b5cf6 !important; }
+.treeview-menu > li > a > .fa.fa-cog,
+.treeview-menu > li > a > .fa.fa-cogs,
+.treeview-menu > li > a > .fa.fa-sliders         { color: #cbd5e1 !important; }
+.treeview-menu > li > a > .fa.fa-envelope,
+.treeview-menu > li > a > .fa.fa-envelope-o      { color: #06b6d4 !important; }
+.treeview-menu > li > a > .fa.fa-archive         { color: #a16207 !important; }
+.treeview-menu > li > a > .fa.fa-address-book,
+.treeview-menu > li > a > .fa.fa-address-book-o  { color: #0ea5e9 !important; }
+.treeview-menu > li > a > .fa.fa-question,
+.treeview-menu > li > a > .fa.fa-question-circle { color: #0ea5e9 !important; }
+.treeview-menu > li > a > .fa.fa-newspaper,
+.treeview-menu > li > a > .fa.fa-newspaper-o     { color: #ec4899 !important; }
+
+/* Child hover polish */
+.treeview-menu > li > a:hover > .fa { opacity: 1; transform: scale(1.1); }
+
+/* Keep colors visible on hover/active: theme overrides set
+   parent icon to a grey/blue on hover which hides our colors.
+   Force icon color to stay even when the parent row is active/hover,
+   unless this specific <li> is the currently-active page. */
+.theme-primary.dark-skin .sidebar-menu > li:hover > a > .fa,
+.theme-primary.dark-skin .sidebar-menu > li:hover > a > i,
+.theme-primary.light-skin .sidebar-menu > li:hover > a > .fa,
+.theme-primary.light-skin .sidebar-menu > li:hover > a > i {
+    filter: brightness(1.15);
+}
+
+/* RTL: keep the dot on the logical start side */
+html[dir="rtl"] .treeview-menu > li > a > .icon-Commit::before {
+    inset-inline-start: 4px;
+}

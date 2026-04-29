@@ -1,0 +1,9 @@
+/**
+ * DACH — تجميع أنماط الجسر (legacy) المقسّمة من dach-legacy-bridge.css.
+ * ترتيب الاستيراد يطابق ترتيب الملف الأحادي السابق (أساس → نماذج → جداول → واجهة datatable).
+ * لا تعيد ترتيب @import دون مراجعة التراكب (cascade).
+ */
+@import './legacy/legacy-buttons.css';
+@import './legacy/legacy-forms.css';
+@import './legacy/legacy-tables.css';
+@import './legacy/legacy-datatable.css';
